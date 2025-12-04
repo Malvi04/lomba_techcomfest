@@ -13,8 +13,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// testing ui 
 Route::get('/login', fn() => view('auth.login'))->name('login');
 Route::get('/register', fn() => view('auth.register'))->name('register');
+Route::get('/leadingpage', fn() => view('pages.leadingpage'))->name('leadingpage');
+Route::get('/about', fn() => view('pages.about'))->name('about');
+
+
+// end 
 
 Route::post('/register', function(Request $req) {
     try {
