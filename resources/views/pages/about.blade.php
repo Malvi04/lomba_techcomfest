@@ -31,38 +31,236 @@
                     />
                 </div>
 
-                <!-- Kanan: Grid Icon + Foto + Tujuan -->
-                <div class="flex flex-col lg:flex-row gap-8 items-start">
-                    <!-- 8 kotak (2 kolom × 4 baris) di sebelah kiri foto -->
-                    <div class="grid grid-cols-2 gap-4 mt-4">
-                        @for($i = 0; $i < 8; $i++)
-                            <div class="w-12 h-12 lg:w-14 lg:h-14 bg-white/40 rounded-2xl"></div>
-                        @endfor
-                    </div>
+                <!-- image dan kotak -->
+                <div class="flex items-start gap-2"> 
+                    <!-- KIRI: KOTAK + TEKS -->
+                    <div class="flex flex-col items-start">
 
-                    <!-- Foto + Teks tujuan -->
-                    <div class="flex-6 space-y-4">
-                        <img 
-                            src="{{ Vite::asset('resources/images/about/mukbang.png') }}" 
-                            alt="Healthy Eating" 
-                            class="w-full max-w-xs lg:max-w-sm rounded-3xl object-cover shadow-2xl lg:mx-1"
-                        />
+                        <!-- KOTAK-KOTAK -->
+                        <div class="grid grid-cols-2 gap-2"> 
+                            @for($i = 0; $i < 8; $i++)
+                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-white/40 rounded-xl"></div>
+                            @endfor
+                        </div>
 
-                        <div class="space-y-3 text-sm lg:text-base">
-                            <p class="font-semibold text-lg">Tujuan kami sederhana :</p>
-                            <p class="leading-relaxed">
-                                membantu kamu mengurangi risiko diabetes dengan cara yang aman, mudah, 
-                                dan didukung informasi nutrisi yang jelas. GlucoMeal bukan hanya aplikasi, 
+                        <!-- TEKS -->
+                        <div class="space-y-2 mt-4 w-[300px]">
+                            <p class="font-semibold text-lg">Tujuan kami sederhana:</p>
+                            <p class="leading-relaxed text-sm lg:text-base">
+                                membantu kamu mengurangi risiko diabetes dengan cara yang aman, mudah,
+                                dan didukung informasi nutrisi yang jelas. GlucoMeal bukan hanya aplikasi,
                                 tapi teman yang menemani perjalanan sehatmu.
                             </p>
                         </div>
+
                     </div>
+
+                    <!-- KANAN: FOTO -->
+                    <img 
+                        src="{{ Vite::asset('resources/images/about/mukbang.png') }}" 
+                        alt="Healthy Eating"
+                        class="w-[220px] h-[220px] lg:w-[240px] lg:h-[240px] rounded-3xl object-cover shadow-2xl m-0 p-0"
+                    />
+
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 3 step -->
+     <section class="w-full bg-[#F5A7A7] py-20 px-6 text-white font-sans">
+
+        <!-- Judul -->
+        <h2 class="text-center text-3xl font-bold mb-4">
+            3 Step Harian Capai Tujuanmu
+        </h2>
+
+        <!-- Subjudul -->
+        <p class="text-center max-w-2xl mx-auto text-base leading-relaxed mb-14">
+            Kami menyediakan apa yang kamu butuhkan dalam monitoring keseharianmu
+            dengan tools bantu hidup sehat kurangi resiko terkena diabetes
+        </p>
+
+        <!-- CARD WRAPPER -->
+        <div class="flex justify-center gap-10 flex-wrap">
+
+            <!-- CARD 1 -->
+            <div class="w-[300px] h-[380px] bg-gradient-to-br from-[#E97C73] to-[#DC5F5A] rounded-2xl shadow-lg relative p-8">
+                <div class="w-full h-full border border-white/70 rounded-xl p-6 flex flex-col justify-between">
+
+                    <!-- ICON -->
+                    <div class="flex justify-center mb-6">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
+                            <img src="{{ Vite::asset('resources/images/about/icon-sugar.png') }}" class="w-8 h-8" />
+                        </div>
+                    </div>
+
+                    <!-- TEXT -->
+                    <div class="text-center space-y-2">
+                        <h3 class="font-semibold text-lg">Pantau Asupan Gulamu</h3>
+                        <p class="text-xs leading-relaxed">
+                            Lihat seberapa banyak gula & karbo dari makanan yang kamu pilih
+                            untuk membantu menjaga gula darah.
+                        </p>
+                    </div>
+
+                    <!-- LEARN MORE -->
+                    <a href="#" class="text-sm mt-6 inline-block">Learn More →</a>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="w-[300px] h-[380px] bg-gradient-to-br from-[#E97C73] to-[#DC5F5A] rounded-2xl shadow-lg relative p-8">
+                <div class="w-full h-full border border-white/70 rounded-xl p-6 flex flex-col justify-between">
+
+                    <div class="flex justify-center mb-6">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
+                            <img src="{{ Vite::asset('resources/images/about/icon-rice.png') }}" class="w-6 h-6" />
+                        </div>
+                    </div>
+
+                    <div class="text-center space-y-2">
+                        <h3 class="font-semibold text-lg">Rekomendasi Kalori Harian</h3>
+                        <p class="text-xs leading-relaxed">
+                            Dapatkan rekomendasi kalori harian yang disesuaikan
+                            dengan umur, berat badan, dan aktivitasmu untuk menjaga pola makan lebih sehat.
+                        </p>
+                    </div>
+
+                    <a href="#" class="text-sm mt-6 inline-block">Learn More →</a>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="w-[300px] h-[380px] bg-gradient-to-br from-[#E97C73] to-[#DC5F5A] rounded-2xl shadow-lg relative p-8">
+                <div class="w-full h-full border border-white/70 rounded-xl p-6 flex flex-col justify-between">
+
+                    <div class="flex justify-center mb-6">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
+                            <img src="{{ Vite::asset('resources/images/about/icon-healty.png') }}" class="w-6 h-6" />
+                        </div>
+                    </div>
+
+                    <div class="text-center space-y-2">
+                        <h3 class="font-semibold text-lg">Tips Sehat Harian</h3>
+                        <br>
+                        <p class="text-xs leading-relaxed">
+                            Tips ringan dan mudah diikuti untuk membantu kamu
+                            membangun kebiasaan yang lebih sehat dan menurunkan risiko diabetes.
+                        </p>
+                    </div>
+
+                    <a href="#" class="text-sm mt-6 inline-block">Learn More →</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- page kenapa harus -->
+     <section class="w-full py-20 bg-[linear-gradient(90deg,#F5A7A7_50%,#FFD9D5_100%)] text-white">
+
+        <!-- TITLE -->
+        <div class="text-center mb-10">
+            <h2 class="text-4xl font-extrabold">Kenapa harus GlucoMeal</h2>
+            <p class="mt-2 text-lg">
+                <span class="text-[#FF3333] font-semibold">benefit</span>
+                pakai program GlucoMeal
+            </p>
+            <p class="mt-3 text-[17px] leading-relaxed max-w-3xl mx-auto">
+                Kami menyediakan analisis nutrisi, rekomendasi kalori, dan tips kesehatan
+                untuk bantu kamu menjaga gula darah tetap stabil.
+            </p>
+        </div>
+
+        <!-- CONTENT WRAPPER -->
+        <div class="flex justify-center items-start gap-20 mt-14">
+
+            <!-- LEFT SIDE -->
+            <div class="flex flex-col items-end text-right space-y-10">
+
+                <!-- 1000+ -->
+                <div>
+                    <p class="text-3xl font-bold text-[#FF3333]">1000+</p>
+                    <p class="text-sm leading-tight mt-1">Makanan tersedia<br> dalam database nutrisi</p>
+                </div>
+
+                <!-- Driven -->
+                <div class="flex flex-col items-end text-right">
+                    <div class="flex items-center gap-2">
+                        <p class="text-[15px] font-semibold text-[#FF3333]">AI-Driven</p>
+                        <span class="text-[#FF3333] text-lg">
+                            <img src="{{ Vite::asset('resources/images/about/icon-ceklis.png') }}" alt="">
+                        </span>
+                    </div>
+                    <p class="text-sm leading-tight mt-1">
+                        Analisis makanan<br> lebih cepat dan akurat
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- CENTER IMAGE -->
+            <div class="relative">
+                <img src="{{ Vite::asset('resources/images/about/img-center.png') }}"
+                    class="w-[500px] h-[330px] object-cover rounded-[54px] shadow-xl"
+                    alt="">
+                
+                <!-- GRADIENT STRIPES -->
+                <div class="absolute bottom-[-120px] inset-x-0 flex justify-center gap-6 opacity-50 pointer-events-none">
+                    <div class="w-10 h-40 bg-gradient-to-t from-[#D37D7D]  rounded-xl"></div>
+                    <div class="w-10 h-48 bg-gradient-to-t from-[#D37D7D]  rounded-xl"></div>
+                    <div class="w-10 h-56 bg-gradient-to-t from-[#D37D7D]  rounded-xl"></div>
+                    <div class="w-10 h-56 bg-gradient-to-t from-[#D37D7D]  rounded-xl"></div>
+                    <div class="w-10 h-48 bg-gradient-to-t from-[#D37D7D]  rounded-xl"></div>
+                    <div class="w-10 h-40 bg-gradient-to-t from-[#D37D7D]  rounded-xl"></div>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="flex flex-col items-start text-left space-y-10">
+
+                <!-- 95% -->
+                <div>
+                    <p class="text-3xl font-bold text-[#FF3333]">95%</p>
+                    <p class="text-sm leading-tight mt-1">
+                        Merasa lebih teratur<br> soal pola makan
+                    </p>
+                </div>
+
+                <!-- Evidence Based -->
+                <div class="flex flex-col items-start">
+                    <div class="flex items-center gap-2">
+                        <span class="text-[#FF3333] text-lg">
+                            <img src="{{ Vite::asset('resources/images/about/icon-ceklis.png') }}" alt="">
+                        </span>
+                        <p class="text-[15px] font-semibold text-[#FF3333]">Evidence-Based</p>
+                    </div>
+                    <p class="text-sm leading-tight mt-1">
+                        Rekomendasi nutrisi berdasarkan<br> standar kesehatan
+                    </p>
+                </div>
+
+                <!-- User Friendly -->
+                <div class="flex flex-col items-start">
+                    <div class="flex items-center gap-2">
+                        <span class="text-[#FF3333] text-lg">
+                            <img src="{{ Vite::asset('resources/images/about/icon-ceklis.png') }}" alt="">
+                        </span>
+                        <p class="text-[15px] font-semibold text-[#FF3333]">User-Friendly</p>
+                    </div>
+                    <p class="text-sm leading-tight mt-1">
+                        Desain simpel dan mudah<br> dipakai siapa pun
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
 
     
     <x-layouts.footer />
