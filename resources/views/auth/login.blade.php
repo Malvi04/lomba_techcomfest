@@ -20,6 +20,10 @@
 
         {{-- RIGHT --}}
         <div class="p-14">
+            @if(request()->query('success'))
+                <div class="mb-4 p-4 bg-green-100 text-green-700 rounded-lg">{{ request()->query('success') }}</div>
+            @endif
+
             @if (session('success'))
                 <div class="mb-4 p-4 bg-green-100 text-green-700 rounded-lg">
                     {{ session('success') }}

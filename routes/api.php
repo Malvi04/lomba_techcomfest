@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 
-/*Route::get('/user', function(Request $req) {
+Route::get('/user', function(Request $req) {
     return $request->user();
 })->middleware('auth:sanctum');
-
+/*
 Route::post('/register', function(Request $req) {
     try {
         $req->validate([
@@ -66,22 +66,22 @@ Route::post('/login', function(Request $req) {
         'user' => $user->only(['full_name', 'username', 'email']),
     ]);
 });
-
+*/
 Route::post('/rv_forgot_password', function (Request $req) {
     try {
         $req->validate([
             'email' => 'required|string|email|max:255'
         ]);
     } catch (ValidationException) {
-        return "Bad Request";
+        return collect($e->errors())->flatten()->first();
     }
 
     $user = User::where('email', $req->email)->first();
 
     if (!$user) {
         return response()->json([
-            'success' => true,
-            'message' => 'Jika email terdaftar, kode verifikasi sudah dikirim.'
+            'success' => false,
+            'message' => 'Email tidak terdaftar!'
         ]);
     }
 
@@ -98,7 +98,7 @@ Route::post('/rv_forgot_password', function (Request $req) {
 
     try {
         Mail::to($user->email)->send(new ResetPasswordCode($verification_code));
-    } catch (\Exception $e) {
+    } catch (Exception $e) {
         Log::error("Gagal kirim email reset password ke {$user->email}: " . $e->getMessage());
         return response()->json([
             'success' => false,
@@ -108,7 +108,7 @@ Route::post('/rv_forgot_password', function (Request $req) {
 
     return response()->json([
         'success' => true,
-        'message' => 'Kode verifikasi sudah dikirim ke email Anda. Kode berlaku 5 menit.'
+        'message' => 'Kode verifikasi sudah dikirim ke email Anda.'
     ]);
 });
 
@@ -119,8 +119,11 @@ Route::post('/forgot_password', function (Request $req) {
             'ver_code' => 'required|integer|digits:6',
             'new_pass' => ['required', 'string', 'min:8', 'confirmed']
         ]);
-    } catch (ValidationException) {
-        return "Bad Request";
+    } catch (ValidationException $e) {
+        return response()->json([
+        'success' => false,
+        'message' => collect($e->errors())->flatten()->first()
+        ]);
     }
 
     $passwordReset = PasswordReset::where('email', $req->email)->where('ver_code', $req->ver_code)->first();
@@ -158,6 +161,7 @@ Route::post('/forgot_password', function (Request $req) {
 
     return response()->json([
         'success' => true,
-        'message' => 'Password berhasil di-reset. Silakan login dengan password baru Anda.'
+        'redirect' => route('login'),
+        'message' => 'Password berhasil diubah! Silakan login kembali.'
     ]);
-});*/
+});
