@@ -33,35 +33,30 @@
 
                 <!-- image dan kotak -->
                 <div class="flex items-start gap-2"> 
-                    <!-- KIRI: KOTAK + TEKS -->
-                    <div class="flex flex-col items-start">
-
-                        <!-- KOTAK-KOTAK -->
-                        <div class="grid grid-cols-2 gap-2"> 
+                    <div class="w-[32%] flex flex-col items-start">
+                        <!-- GRID 8 Kotak -->
+                        <div class="grid grid-cols-2 gap-4 mb-6">
                             @for($i = 0; $i < 8; $i++)
-                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-white/40 rounded-xl"></div>
+                                <div class="w-[46px] h-[46px] bg-white/70 rounded-md"></div>
                             @endfor
                         </div>
 
-                        <!-- TEKS -->
-                        <div class="space-y-2 mt-4 w-[300px]">
-                            <p class="font-semibold text-lg">Tujuan kami sederhana:</p>
-                            <p class="leading-relaxed text-sm lg:text-base">
-                                membantu kamu mengurangi risiko diabetes dengan cara yang aman, mudah,
-                                dan didukung informasi nutrisi yang jelas. GlucoMeal bukan hanya aplikasi,
-                                tapi teman yang menemani perjalanan sehatmu.
+                        <!-- TEXT -->
+                        <div class="text-white/90 leading-relaxed w-[260px]">
+                            <p class="font-semibold mb-2">Tujuan kami sederhana:</p>
+
+                            <p class="text-sm">
+                                membantu kamu mengurangi risiko diabetes dengan cara yang aman, mudah, dan didukung informasi
+                                nutrisi yang jelas. GlucoMeal bukan hanya aplikasi, tapi teman yang menemani perjalanan sehatmu.
                             </p>
                         </div>
-
                     </div>
-
-                    <!-- KANAN: FOTO -->
-                    <img 
-                        src="{{ Vite::asset('resources/images/about/mukbang.png') }}" 
-                        alt="Healthy Eating"
-                        class="w-[220px] h-[220px] lg:w-[240px] lg:h-[240px] rounded-3xl object-cover shadow-2xl m-0 p-0"
-                    />
-
+                        <!-- FOTO -->
+                        <img 
+                            src="{{ Vite::asset('resources/images/about/mukbang.png') }}"
+                            class="w-[260px] h-[260px] object-cover rounded-[40px] mb-6"
+                            alt=""
+                        >
                 </div>
             </div>
         </div>
