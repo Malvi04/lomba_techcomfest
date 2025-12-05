@@ -12,13 +12,13 @@
                     </div>
 
                     <p class="text-base leading-relaxed">
-                        GlucoMeal lahir dari kebutuhan banyak orang untuk memahami makanan dengan cara yang lebih mudah. 
+                        GlucoGuide lahir dari kebutuhan banyak orang untuk memahami makanan dengan cara yang lebih mudah. 
                         Kami percaya bahwa menjaga pola makan tidak harus ribet — cukup dimulai dari mengenali apa yang kita makan setiap hari.
                     </p>
 
                     <p class="text-base leading-relaxed">
                         Melalui fitur seperti rekomendasi kalori harian, analisis gula & karbo dari setiap makanan, 
-                        serta tips harian yang praktis, GlucoMeal membantu kamu membangun kebiasaan sehat secara perlahan tapi konsisten.
+                        serta tips harian yang praktis, GlucoGuide membantu kamu membangun kebiasaan sehat secara perlahan tapi konsisten.
                     </p>
                 </div>
 
@@ -26,7 +26,7 @@
                 <div class="flex justify-center">
                     <img 
                         src="{{ Vite::asset('resources/images/gluco.png') }}" 
-                        alt="GlucoMeal Logo" 
+                        alt="GlucoGuide Logo" 
                         class="w-72 lg:w-96 drop-shadow-2xl"
                     />
                 </div>
@@ -47,7 +47,7 @@
 
                             <p class="text-sm">
                                 membantu kamu mengurangi risiko diabetes dengan cara yang aman, mudah, dan didukung informasi
-                                nutrisi yang jelas. GlucoMeal bukan hanya aplikasi, tapi teman yang menemani perjalanan sehatmu.
+                                nutrisi yang jelas. GlucoGuide bukan hanya aplikasi, tapi teman yang menemani perjalanan sehatmu.
                             </p>
                         </div>
                     </div>
@@ -158,10 +158,10 @@
 
         <!-- TITLE -->
         <div class="text-center mb-10">
-            <h2 class="text-4xl font-extrabold">Kenapa harus GlucoMeal</h2>
+            <h2 class="text-4xl font-extrabold">Kenapa harus GlucoGuide</h2>
             <p class="mt-2 text-lg">
                 <span class="text-[#FF3333] font-semibold">benefit</span>
-                pakai program GlucoMeal
+                pakai program GlucoGuide
             </p>
             <p class="mt-3 text-[17px] leading-relaxed max-w-3xl mx-auto">
                 Kami menyediakan analisis nutrisi, rekomendasi kalori, dan tips kesehatan
