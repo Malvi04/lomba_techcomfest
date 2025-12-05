@@ -1,4 +1,4 @@
-<x-layouts.app title="GlucoMeal">
+<x-layouts.app title="GlucoGuide">
     <x-layouts.navbar />
 
     <!-- HERO SECTION -->
@@ -109,7 +109,7 @@
                     Ingin pola makan lebih teratur?<br>
                     Pantau asupan, kenali kebiasaanmu,<br>
                     dan capai hidup yang lebih sehat<br>
-                    bersama GlucoMeal.
+                    bersama GlucoGuide.
                 </p>
             </div>
             <!-- RIGHT: Image with circle bg -->
@@ -137,7 +137,7 @@
                         </defs>
                         <rect width="100%" height="100%" fill="url(#dots)" />
                     </svg> -->
-                    <img src="{{ Vite::asset('resources/images/leadingpage/bg-bulet.png')}}" 
+                    <img src="{{ Vite::asset('resources/images/leadingpage/bg-bulet.png')}}"    
                     alt="bg"/>
                 </div>
                 <!-- Progress Bar -->
@@ -156,8 +156,8 @@
                         <div class="absolute inset-0 w-[100px] h-[100px] rounded-full bg-white shadow-xl"></div>
                         
                         <!-- PROGRESS CIRCLE -->
-                        <div class="relative w-[100px] h-[100px] rounded-full border-[10px] border-[#E85C4A] border-t-transparent flex items-center justify-center">
-                            <span class="text-xl font-semibold text-gray-800">87%</span>
+                        <div class="relative w-[100px] h-[100px] rounded-full border-[10px] border-[#E85C4A] border-t-transparent flex items-center justify-center rotate-[-50deg]">
+                         <span class="absolute text-xl font-semibold text-gray-800 rotate-[50deg]">87%</span>
                         </div>
                     </div>
 

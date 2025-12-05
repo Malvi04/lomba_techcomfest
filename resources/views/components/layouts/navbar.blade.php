@@ -4,15 +4,15 @@
         {{-- LEFT: Logo --}}
         <div class="flex items-center gap-3 flex-none">
             <img src="{{ Vite::asset('resources/images/gluco.png') }}" class="w-20" alt="">
-            <span class="text-2xl font-bold text-red-600">GlucoMeal</span>
+            <span class="text-2xl font-bold text-red-600">GlucoGuide</span>
         </div>
 
         {{-- CENTER: Menu --}}
         <ul class="flex-1 flex items-center justify-center gap-10 font-medium text-gray-700">
-            <li><a href="/" class="hover:text-red-600">Home</a></li>
-            <li><a href="/about" class="hover:text-red-600">About</a></li>
-            <li><a href="#" class="hover:text-red-600">Our Services</a></li>
-            <li><a href="#" class="hover:text-red-600">Contact Us</a></li>
+            <li><a href="#" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">Home</a></li>
+            <li><a href="#" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">About</a></li>
+            <li><a href="#" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">Our Services</a></li>
+            <li><a href="#" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">Contact Us</a></li>
         </ul>
 
         {{-- RIGHT: Masuk --}}

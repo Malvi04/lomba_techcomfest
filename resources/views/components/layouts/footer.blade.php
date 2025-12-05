@@ -6,11 +6,11 @@
                 <img src="{{ Vite::asset('resources/images/gluco.png') }}" 
                      alt="GlucoMeal Logo"
                      class="w-20">
-                <h2 class="text-2xl font-bold text-red-600">GlucoMeal</h2>
+                <h2 class="text-2xl font-bold text-red-600">GlucoGuide</h2>
             </div>
             <p class="text-lg font-medium leading-relaxed">
                 Bebaskan gula darah mu <br> 
-                dengan <span class="text-red-500 font-semibold">GlucoMeal</span>
+                dengan <span class="text-red-500 font-semibold">GlucoGuide</span>
             </p>
             <!-- Social -->
             <div class="flex items-center gap-4 mt-4">
