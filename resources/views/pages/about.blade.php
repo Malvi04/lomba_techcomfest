@@ -154,7 +154,7 @@
     </section>
 
     <!-- page kenapa harus -->
-     <section class="w-full py-20 bg-[linear-gradient(90deg,#F5A7A7_50%,#FFD9D5_100%)] text-white">
+     <section class="w-full py-20 bg-[linear-gradient(180deg,#F5A7A7_50%,#FFD9D5_100%)] text-white">
 
         <!-- TITLE -->
         <div class="text-center mb-10">
@@ -178,18 +178,18 @@
                 <!-- 1000+ -->
                 <div>
                     <p class="text-3xl font-bold text-[#FF3333]">1000+</p>
-                    <p class="text-sm leading-tight mt-1">Makanan tersedia<br> dalam database nutrisi</p>
+                    <p class="text-sm leading-tight mt-1 translate-x-5">Makanan tersedia<br> dalam database nutrisi</p>
                 </div>
 
                 <!-- Driven -->
                 <div class="flex flex-col items-end text-right">
                     <div class="flex items-center gap-2">
-                        <p class="text-[15px] font-semibold text-[#FF3333]">AI-Driven</p>
-                        <span class="text-[#FF3333] text-lg">
+                        <p class="text-[15px] font-semibold text-[#FF3333] -translate-x-15">AI-Driven</p>
+                        <span class="text-[#FF3333] text-lg -translate-x-15">
                             <img src="{{ Vite::asset('resources/images/about/icon-ceklis.png') }}" alt="">
                         </span>
                     </div>
-                    <p class="text-sm leading-tight mt-1">
+                    <p class="text-sm leading-tight mt-1 -translate-x-10">
                         Analisis makanan<br> lebih cepat dan akurat
                     </p>
                 </div>
@@ -199,17 +199,21 @@
             <!-- CENTER IMAGE -->
             <div class="relative">
                 <img src="{{ Vite::asset('resources/images/about/img-center.png') }}"
-                    class="w-[500px] h-[330px] object-cover rounded-[54px] shadow-xl"
+                    class="w-[500px] h-[330px] object-cover rounded-[54px] shadow-xl  border-4 border-[#FFFFFF]"
                     alt="">
                 
                 <!-- GRADIENT STRIPES -->
-                <div class="absolute bottom-[-120px] inset-x-0 flex justify-center gap-6 opacity-50 pointer-events-none">
-                    <div class="w-10 h-40 bg-gradient-to-t from-[#D37D7D]  rounded-xl"></div>
-                    <div class="w-10 h-48 bg-gradient-to-t from-[#D37D7D]  rounded-xl"></div>
-                    <div class="w-10 h-56 bg-gradient-to-t from-[#D37D7D]  rounded-xl"></div>
-                    <div class="w-10 h-56 bg-gradient-to-t from-[#D37D7D]  rounded-xl"></div>
-                    <div class="w-10 h-48 bg-gradient-to-t from-[#D37D7D]  rounded-xl"></div>
-                    <div class="w-10 h-40 bg-gradient-to-t from-[#D37D7D]  rounded-xl"></div>
+                <div class="absolute bottom-[-220px] inset-x-0 flex justify-center gap-6 opacity-100 pointer-events-none">
+                    <div class="flex gap-4 -translate-x-45">
+                        <div class="w-10 h-[290px] bg-gradient-to-t from-[#D37D7D]  rounded-xl -translate-y-10 "></div>
+                        <div class="w-10 h-[350px] bg-gradient-to-t from-[#D37D7D]  rounded-xl -translate-y-25"></div>
+                        <div class="w-10 h-[390px] bg-gradient-to-t from-[#D37D7D]  rounded-xl -translate-y-35"></div>
+                    </div>
+                    <div class="flex gap-4 translate-x-45">
+                        <div class="w-10 h-[390px] bg-gradient-to-t from-[#D37D7D]  rounded-xl -translate-y-35"></div>
+                        <div class="w-10 h-[350px] bg-gradient-to-t from-[#D37D7D]  rounded-xl -translate-y-25"></div>
+                        <div class="w-10 h-[290px] bg-gradient-to-t from-[#D37D7D]  rounded-xl -translate-y-10"></div>
+                    </div>
                 </div>
             </div>
 
@@ -218,8 +222,8 @@
 
                 <!-- 95% -->
                 <div>
-                    <p class="text-3xl font-bold text-[#FF3333]">95%</p>
-                    <p class="text-sm leading-tight mt-1">
+                    <p class="text-3xl font-bold text-[#FF3333] ">95%</p>
+                    <p class="text-sm leading-tight mt-1 -translate-x-5">
                         Merasa lebih teratur<br> soal pola makan
                     </p>
                 </div>
@@ -227,12 +231,12 @@
                 <!-- Evidence Based -->
                 <div class="flex flex-col items-start">
                     <div class="flex items-center gap-2">
-                        <span class="text-[#FF3333] text-lg">
+                        <span class="text-[#FF3333] text-lg translate-x-15">
                             <img src="{{ Vite::asset('resources/images/about/icon-ceklis.png') }}" alt="">
                         </span>
-                        <p class="text-[15px] font-semibold text-[#FF3333]">Evidence-Based</p>
+                        <p class="text-[15px] font-semibold text-[#FF3333] translate-x-15">Evidence-Based</p>
                     </div>
-                    <p class="text-sm leading-tight mt-1">
+                    <p class="text-sm leading-tight mt-1 translate-x-10">
                         Rekomendasi nutrisi berdasarkan<br> standar kesehatan
                     </p>
                 </div>
@@ -240,12 +244,12 @@
                 <!-- User Friendly -->
                 <div class="flex flex-col items-start">
                     <div class="flex items-center gap-2">
-                        <span class="text-[#FF3333] text-lg">
+                        <span class="text-[#FF3333] text-lg translate-x-25">
                             <img src="{{ Vite::asset('resources/images/about/icon-ceklis.png') }}" alt="">
                         </span>
-                        <p class="text-[15px] font-semibold text-[#FF3333]">User-Friendly</p>
+                        <p class="text-[15px] font-semibold text-[#FF3333] translate-x-25">User-Friendly</p>
                     </div>
-                    <p class="text-sm leading-tight mt-1">
+                    <p class="text-sm leading-tight mt-1 translate-x-20">
                         Desain simpel dan mudah<br> dipakai siapa pun
                     </p>
                 </div>
