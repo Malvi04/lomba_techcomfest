@@ -18,6 +18,10 @@ Route::get('/about', function() {
     return redirect('dashboard');
 });
 
+Route::get('/hasil', function () {
+    return view('pages.result');
+})->name('hasil');
+
 Route::get('/login', fn() => view('auth.login'))->name('login');
 Route::get('/register', fn() => view('auth.register'))->name('register');
 Route::get('/forgot_password', fn() => view('auth.forgot_password'))->name('forgot_password');
