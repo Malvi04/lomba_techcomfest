@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 
 Route::get('/', function () {
-    if (!Auth::check()) return view('pages.leadingpage');
+    if (!Auth::check()) return view('pages.homepage');
     return redirect('dashboard');
 });
 Route::get('/about', function() {

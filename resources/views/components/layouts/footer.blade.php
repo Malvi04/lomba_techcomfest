@@ -2,9 +2,9 @@
     <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
         <!-- Logo & Text -->
         <div>
-            <div class="flex items-center gap-3 mb-4">
+            <div class="flex items-center mb-4">
                 <img src="{{ Vite::asset('resources/images/gluco.png') }}" 
-                     alt="GlucoMeal Logo"
+                     alt="GlucoGuide Logo"
                      class="w-20">
                 <h2 class="text-2xl font-bold text-red-600">GlucoGuide</h2>
             </div>
@@ -42,7 +42,7 @@
     <!-- Bottom Copyright -->
     <div class="w-full border-t border-gray-200">
         <div class="max-w-7xl mx-auto py-4 flex items-center justify-center gap-2 text-gray-800 font-medium">
-            <span class="text-lg">©</span> 2025 <span class="font-semibold text-red-600">GlucoMeal</span>
+            <span class="text-lg">©</span> 2025 <span class="font-semibold text-red-600">GlucoGuide</span>
         </div>
     </div>
     <!-- Gambar makanan kanan bawah -->
