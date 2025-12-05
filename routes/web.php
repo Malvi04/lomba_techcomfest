@@ -10,19 +10,17 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 
 Route::get('/', function () {
-    return view('welcome');
+    if (!Auth::check()) return view('pages.leadingpage');
+    return redirect('dashboard');
+});
+Route::get('/about', function() {
+    if (!Auth::check()) return view('pages.about');
+    return redirect('dashboard');
 });
 
-// testing ui 
 Route::get('/login', fn() => view('auth.login'))->name('login');
 Route::get('/register', fn() => view('auth.register'))->name('register');
-Route::get('/leadingpage', fn() => view('pages.leadingpage'))->name('leadingpage');
-Route::get('/about', fn() => view('pages.about'))->name('about');
-// end 
-
-
 Route::get('/forgot_password', fn() => view('auth.forgot_password'))->name('forgot_password');
-
 
 Route::post('/register', function(Request $req) {
     try {

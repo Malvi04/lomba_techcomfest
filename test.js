@@ -1,17 +1,17 @@
-const API_KEY = "AIzaSyB-dtE-oeykfrJqlOLw20xTwysf9k8iFwc"; // jangan hardcode
 const MODEL = "gemini-2.5-flash-lite";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`;
 
-const imgPath = "MAKANAN.png";
+const imgPath = "image copy 3.png";
 const img = await Bun.file(imgPath).arrayBuffer();
 const base64img = Buffer.from(img).toString("base64");
+console.log(base64img);
 
 const body = {
   contents: [
     {
       role: "user",
       parts: [
-        { text: `Analyze the image.\nReturn ONLY valid JSON.\nFormat:\n{\n  \"calories\": number\n}\nIf unsure, set calories = 0.\nNo extra text. JSON only.` },
+        { text: `Analyze this food image and returns ["food_name"]. if its not a food, then return ["unknown"]. all case must be lower. and returns as it is` },
         {
           inlineData: {
             mimeType: "image/png", // ubah ke "image/png" jika PNG

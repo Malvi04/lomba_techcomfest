@@ -22,10 +22,10 @@
         <div>
             <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
             <ul class="space-y-2 text-gray-700 font-medium">
-                <li>Home</li>
-                <li>About</li>
-                <li>Our Services</li>
-                <li>Contact</li>
+                <li><a href="/" class="hover:text-red-600">Home</a></li>
+                <li><a href="/about" class="hover:text-red-600">About</a></li>
+                <li><a href="#" class="hover:text-red-600">Our Services</a></li>
+                <li><a href="#" class="hover:text-red-600">Contact Us</a></li>
             </ul>
         </div>
         <!-- Services -->

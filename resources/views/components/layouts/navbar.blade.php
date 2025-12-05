@@ -9,15 +9,15 @@
 
         {{-- CENTER: Menu --}}
         <ul class="flex-1 flex items-center justify-center gap-10 font-medium text-gray-700">
-            <li><a href="#" class="hover:text-red-600">Home</a></li>
-            <li><a href="#" class="hover:text-red-600">About</a></li>
+            <li><a href="/" class="hover:text-red-600">Home</a></li>
+            <li><a href="/about" class="hover:text-red-600">About</a></li>
             <li><a href="#" class="hover:text-red-600">Our Services</a></li>
             <li><a href="#" class="hover:text-red-600">Contact Us</a></li>
         </ul>
 
         {{-- RIGHT: Masuk --}}
         <div class="flex-none">
-            <a href="#" class="text-red-600 font-bold hover:text-red-700 text-lg">Masuk</a>
+            <a href="/login" class="text-red-600 font-bold hover:text-red-700 text-lg">Masuk</a>
         </div>
     </div>
 </nav>
