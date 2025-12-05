@@ -1,5 +1,7 @@
  {{-- NAVBAR --}}
-<nav class="fixed top-0 left-0 right-0 z-30 bg-white shadow-sm">
+<nav x-data="{ contactOpen: false }"
+     class="fixed top-0 left-0 right-0 z-30 bg-white shadow-sm">
+
     <div class="w-full flex items-center justify-between px-10 py-6 bg-transparent">
         {{-- LEFT: Logo --}}
         <div class="flex items-center flex-none">
@@ -12,7 +14,7 @@
             <li><a href="/" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">Home</a></li>
             <li><a href="/about" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">About</a></li>
             <li><a href="#" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">Our Services</a></li>
-            <li><a href="#" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">Contact Us</a></li>
+            <li><button @click="contactOpen = true" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">Contact Us</button>></li>
         </ul>
 
         {{-- RIGHT: Masuk --}}

@@ -18,6 +18,7 @@ Route::get('/about', function() {
     return redirect('dashboard');
 });
 
+
 Route::get('/hasil', function () {
     return view('pages.result');
 })->name('hasil');
