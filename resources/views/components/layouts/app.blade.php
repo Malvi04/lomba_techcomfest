@@ -14,6 +14,6 @@
         {{ $slot }}
     </div>
     {{-- Contact Popup --}}
-    @include('pages.popup.contact-popup')
+    @include('components.popup.contactUs')
 </body>
 </html>
