@@ -18,6 +18,9 @@ Route::get('/about', function() {
     return redirect('dashboard');
 });
 
+Route::get('/dashboard', function () {
+    return view('pages.dashboard');
+})->name('dashboard');
 
 Route::get('/hasil', function () {
     return view('pages.result');

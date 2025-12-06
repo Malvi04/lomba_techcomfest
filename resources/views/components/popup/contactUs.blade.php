@@ -1,12 +1,17 @@
-<div 
-    x-data="{ open: true }"
-    x-show="contactOpen"
-    x-transition.opacity
-    class="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
->
+    <div 
+        x-show="contactOpen"
+        x-transition.opacity
+        x-cloak
+        class="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
+        @click.self="contactOpen = false"
+    >
 
     {{-- CARD POPUP UTAMA --}}
-    <div class="w-[689px] h-[398px] bg-white rounded-[32px] shadow-xl overflow-hidden relative flex">
+    <div class="w-[689px] h-[398px] bg-white rounded-[32px] shadow-xl overflow-hidden relative flex ">
+
+        <div class="absolute top-0 right-[-50px] w-[260px] h-full bg-[#F4B6B6] opacity-50 
+            rounded-[250px] rotate-[15deg] z-0 pointer-events-none ">
+        </div>
 
         {{-- Tombol Close --}}
         <button 
@@ -15,11 +20,11 @@
         >✕</button>
 
         {{-- KIRI --}}
-        <div class="w-[260px] bg-[#E47A7A]/40 h-full relative flex flex-col items-center pt-8">
+        <div class="w-[300px] bg-[#E47A7A]/40 h-full relative flex flex-col items-center pt-8">
 
             {{-- Shape background --}}
             <div class="absolute inset-0">
-                <div class="absolute w-full h-full bg-[#E47A7A]/40 rounded-[32px]"></div>
+                <div class="absolute w-full h-full bg-[#E47A7A]/40 rounded-[41px]"></div>
             </div>
 
             {{-- Logo --}}
@@ -27,32 +32,31 @@
                  class="w-16 z-10 mb-6">
 
             {{-- KONTAK --}}
-            <div class="z-10 text-white px-6 space-y-4 text-sm leading-tight">
-
-                <div class="flex items-start gap-3">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <p>Jalan Mergenda Raya No. 565, Panada Citra Depak,<br>Jawa Barat.</p>
+            <div class="z-10 text-white px-6 space-y-10 text-sm leading-tight">
+                <div class="flex items-start gap-8 text-left">
+                    <i class="fa-solid fa-location-dot mt-1"></i>
+                    <p class="leading-snug">Jalan Margonda Raya No.565,Pondok Cina,Kota Depok,Jawa Barat.</p>
                 </div>
 
-                <div class="flex items-center gap-3">
+                <div class="flex items-start gap-8 text-left">
                     <i class="fa-solid fa-envelope"></i>
                     <p>contact.glucosemail@gmail.com</p>
                 </div>
 
-                <div class="flex items-center gap-3">
+                <div class="flex items-start gap-8 text-left">
                     <i class="fa-solid fa-phone"></i>
-                    <p>+62 08080 808080</p>
+                    <p>+62 812-9709-3583</p>
                 </div>
 
             </div>
 
             {{-- Vertical "CONTACT US" --}}
-            <p class="absolute left-0 bottom-8 rotate-[-90deg] origin-left text-white text-2xl font-bold tracking-wide">
+            <p class="absolute left-6 bottom-25 rotate-[-90deg] origin-left text-white text-3xl font-bold tracking-wide opacity-74">
                 Contact Us
             </p>
 
             {{-- Line --}}
-            <div class="absolute right-6 top-1/2 -translate-y-1/2 w-[4px] h-[150px] bg-[#E34141] rounded-full"></div>
+            <div class="absolute right-6 top-1/2 -translate-y-1/2 w-[6px] h-[200px] bg-gradient-to-r from-[#FF5949] to-[#A65353]/30 rounded-full"></div>
         </div>
 
         {{-- KANAN - FORM --}}
