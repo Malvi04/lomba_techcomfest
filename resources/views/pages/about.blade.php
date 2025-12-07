@@ -80,7 +80,7 @@
         <div class="flex justify-center gap-10 flex-wrap">
 
             <!-- CARD 1 -->
-            <div class="w-[300px] h-[380px] bg-gradient-to-br from-[#E97C73] to-[#DC5F5A] rounded-2xl shadow-lg relative p-8">
+            <div class="w-[300px] h-[420px] bg-gradient-to-br from-[#E97C73] to-[#DC5F5A] rounded-2xl shadow-lg relative p-8">
                 <div class="w-full h-full border border-white/70 rounded-xl p-6 flex flex-col justify-between">
 
                     <!-- ICON -->
@@ -105,7 +105,7 @@
             </div>
 
             <!-- CARD 2 -->
-            <div class="w-[300px] h-[380px] bg-gradient-to-br from-[#E97C73] to-[#DC5F5A] rounded-2xl shadow-lg relative p-8">
+            <div class="w-[300px] h-[420px] bg-gradient-to-br from-[#E97C73] to-[#DC5F5A] rounded-2xl shadow-lg relative p-8">
                 <div class="w-full h-full border border-white/70 rounded-xl p-6 flex flex-col justify-between">
 
                     <div class="flex justify-center mb-6">
@@ -114,9 +114,9 @@
                         </div>
                     </div>
 
-                    <div class="text-center space-y-2">
+                    <div class="text-center space-y-0">
                         <h3 class="font-semibold text-lg">Rekomendasi Kalori Harian</h3>
-                        <p class="text-xs leading-relaxed">
+                        <p class="text-sm leading-relaxed">
                             Dapatkan rekomendasi kalori harian yang disesuaikan
                             dengan umur, berat badan, dan aktivitasmu untuk menjaga pola makan lebih sehat.
                         </p>
@@ -125,9 +125,10 @@
                     <a href="#" class="text-sm mt-6 inline-block">Learn More →</a>
                 </div>
             </div>
+            
 
             <!-- CARD 3 -->
-            <div class="w-[300px] h-[380px] bg-gradient-to-br from-[#E97C73] to-[#DC5F5A] rounded-2xl shadow-lg relative p-8">
+            <div class="w-[300px] h-[420px] bg-gradient-to-br from-[#E97C73] to-[#DC5F5A] rounded-2xl shadow-lg relative p-8">
                 <div class="w-full h-full border border-white/70 rounded-xl p-6 flex flex-col justify-between">
 
                     <div class="flex justify-center mb-6">
@@ -139,7 +140,7 @@
                     <div class="text-center space-y-2">
                         <h3 class="font-semibold text-lg">Tips Sehat Harian</h3>
                         <br>
-                        <p class="text-xs leading-relaxed">
+                        <p class="text-sm leading-relaxed">
                             Tips ringan dan mudah diikuti untuk membantu kamu
                             membangun kebiasaan yang lebih sehat dan menurunkan risiko diabetes.
                         </p>
