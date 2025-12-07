@@ -1,4 +1,5 @@
  {{-- NAVBAR --}}
+<nav x-data="{ contactOpen: false }" class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-md">
     <div class="w-full flex items-center justify-between px-10 py-6 bg-transparent">
         {{-- LEFT: Logo --}}
         <div class="flex items-center flex-none">

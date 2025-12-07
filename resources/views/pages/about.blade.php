@@ -93,7 +93,7 @@
                     <!-- TEXT -->
                     <div class="text-center space-y-2">
                         <h3 class="font-semibold text-lg">Pantau Asupan Gulamu</h3>
-                        <p class="text-xs leading-relaxed">
+                        <p class="text-sm leading-relaxed">
                             Lihat seberapa banyak gula & karbo dari makanan yang kamu pilih
                             untuk membantu menjaga gula darah.
                         </p>

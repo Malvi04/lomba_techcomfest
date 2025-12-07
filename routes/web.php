@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 
+
+// testing ui woi jangan dulu di apusss
+Route::get('/services', function () {
+    return view('pages.services');
+})->name('services');
+
+
+// end testing ui
+
 Route::get('/', function () {
     if (!Auth::check()) return view('pages.homepage');
     return redirect('dashboard');
