@@ -11,7 +11,7 @@
         <ul class="flex-1 flex items-center justify-center gap-10 font-medium text-gray-700">
             <li><a href="/" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">Home</a></li>
             <li><a href="/about" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">About</a></li>
-            <li><a href="#" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">Our Services</a></li>
+            <li><a href="/services" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">Our Services</a></li>
             <li><button @click="contactOpen = true" type="button" class="hover:underline hover:underline-offset-4 hover:decoration-red-600 hover:text-red-600">Contact Us</button></li>
         </ul>
 

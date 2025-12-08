@@ -22,6 +22,12 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'limit_protein',
+        'limit_karbo',
+        'limit_kalori',
+        'current_protein',
+        'current_karbo',
+        'current_kalori'
     ];
 
     /**
@@ -44,6 +50,12 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'limit_protein' => 'decimal:2',
+            'limit_karbo' => 'decimal:2',
+            'limit_kalori' => 'decimal:2',
+            'current_protein' => 'decimal:2',
+            'current_karbo' => 'decimal:2',
+            'current_kalori' => 'decimal:2'
         ];
     }
 }

@@ -1,4 +1,4 @@
-<x-layouts.app title="Dashboard">
+<x-layouts.appdashboard title="Dashboard">
 
 <div x-data="{ photoOpen: false }">
 
@@ -9,7 +9,7 @@
         <div class="flex justify-between items-center mb-6">
             <div class="flex items-center gap-3">
                 <img src="{{ asset('images/icons/user.png') }}" class="w-10 h-10">
-                <span class="font-semibold">User_name</span>
+                <span class="font-semibold">Halo, {{ $user->username }}!</span>
             </div>
             <img src="{{ asset('images/icons/setting.png') }}" class="w-8 h-8">
         </div>
@@ -24,9 +24,15 @@
                 </div>
 
                 <div class="grid grid-cols-3 gap-6 text-sm mb-3">
-                    <p>Protein<br><b>60.2 g</b></p>
-                    <p>Karbo<br><b>200 g</b></p>
-                    <p>Kalori<br><b>1000 g</b></p>
+                    <p>Protein<br>
+                        <b>{{ rtrim(rtrim($user->current_protein, '0'), '.') }} g</b> / <b>{{ rtrim(rtrim($user->limit_protein, '0'), '.') }}g</b>
+                    </p>
+                    <p>Karbo<br>
+                        <b>{{ rtrim(rtrim($user->current_karbo, '0'), '.') }} g</b> / <b>{{ rtrim(rtrim($user->limit_karbo, '0'), '.') }}g</b>
+                    </p>
+                    <p>Kalori<br>
+                        <b>{{ rtrim(rtrim($user->current_kalori, '0'), '.') }} g</b> / <b>{{ rtrim(rtrim($user->limit_kalori, '0'), '.') }}g</b>
+                    </p>
                 </div>
 
                 <div class="relative w-full h-4 bg-white/50 rounded-full overflow-hidden">
@@ -46,10 +52,13 @@
 
         <div class="grid grid-cols-4 gap-4 mb-8">
             <div class="bg-gradient-to-b from-[#FF6A5E] to-[#FF4D4D] rounded-2xl p-5">
-                <p class="font-semibold mb-3">Gula · Karbo · Kalori</p>
-                <p>120 g · 300 g · 1200 g</p>
+            <p class="font-semibold mb-3">Protein · Karbo · Kalori</p>
+                <p>
+                    {{ rtrim(rtrim($user->limit_protein, '0'), '.') }}g · 
+                    {{ rtrim(rtrim($user->limit_karbo, '0'), '.') }}g · 
+                    {{ rtrim(rtrim($user->limit_kalori, '0'), '.') }}g
+                </p>
             </div>
-
             <div class="bg-[#FF6A5E] rounded-2xl p-5 flex justify-between items-center">
                 <img src="{{ asset('images/icons/bed.png') }}" class="w-10">
                 <span>→</span>
@@ -68,8 +77,8 @@
 
         <!-- FOOD LOG -->
         <div class="mb-6">
-            <p>Ini adalah catatan makanan kamu :</p>
-            <p class="font-semibold">Hi, User</p>
+            <p>Ini adalah catatan makanan kamu: </p>
+            <p class="font-semibold">Hi, {{ $user->full_name }}</p>
             <p>Mau makan apa hari ini?</p>
         </div>
 
@@ -88,15 +97,28 @@
         </button>
 
         <!-- UPLOAD PHOTO BUTTON -->
-        <button
-            type="button"
-            @click="photoOpen = true"
-            class="w-full border-2 border-dashed border-white/70 rounded-3xl p-16
-                   flex flex-col items-center gap-3 hover:bg-white/10 transition"
-        >
-            <img src="{{ Vite::asset('resources/images/icons/camera.png') }}" class="w-20">
-            <p class="font-medium">+ Tambahkan dengan foto</p>
-        </button>
+        <div x-data="upload_photo_food()">
+
+            <input 
+                type="file"
+                x-ref="uploadFoto"
+                accept="image/*"
+                class="hidden"
+                @change="onFile"
+            />
+
+            <button
+                type="button"
+                @click="$refs.uploadFoto.click()"
+                class="w-full border-2 border-dashed border-white/70 rounded-3xl p-16
+                    flex flex-col items-center gap-3 hover:bg-white/10 transition"
+            >
+                <img src="{{ Vite::asset('resources/images/icons/camera.png') }}" class="w-20">
+                <p class="font-medium">+ Tambahkan dengan foto (Max: 2MB)</p>
+            </button>
+
+        </div>
+
 
         <div class="flex justify-end mt-6">
             <span class="flex items-center gap-2 cursor-pointer">
@@ -109,5 +131,67 @@
     @include('pages.photoUploadPopup')
 
 </div>
+<script>
+function upload_photo_food() {
+  return {
+    file: null,
+    preview: null,
+    maxBytes: 2 * 1024 * 1024, // contoh: 2MB sebelum encoding
+
+    onFile(e) {
+      const f = e.target.files[0];
+      if (!f) return;
+
+      if (!f.type.startsWith('image/')) {
+        alert('Pilih file gambar!');
+        e.target.value = '';
+        return;
+      }
+
+      // optional: ukuran sebelum base64
+      if (f.size > this.maxBytes) {
+        alert('Maksimal file ' + (this.maxBytes/1024/1024) + 'MB.');
+        e.target.value = '';
+        return;
+      }
+
+      this.file = f;
+      this.preview = URL.createObjectURL(f);
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        const dataUrl = reader.result;
+        this.sendBase64(dataUrl.split(',')[1], f.name);
+      };
+      reader.readAsDataURL(f);
+    },
+
+    async sendBase64(dataUrl, filename) {
+      try {
+        const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+        const res = await fetch('/api/predict_image', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            ...(token ? {'X-CSRF-TOKEN': token} : {})
+          },
+          body: new URLSearchParams({
+            "image": dataUrl
+          })
+        });
+
+        const json = await res.json();
+        if (!res.ok) throw json;
+        console.log('Upload sukses', json);
+        alert('Upload sukses!');
+      } catch (err) {
+        console.error(err);
+        alert('Upload gagal. Lihat console.');
+      }
+    }
+  }
+}
+</script>
 
 </x-layouts.app>

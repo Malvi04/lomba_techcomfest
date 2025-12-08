@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Client\ResponseSequence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -8,42 +9,50 @@ use App\Mail\ResetPasswordCode;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
-
-function calculate_name_alias_json($name_food_string) {
+function calculate_name_alias_json($foods) {
     $foodData = json_decode(file_get_contents(base_path('routes/nutritions.json')), true);
 
-    $search = strtolower(trim($name_food_string));
-    $bestScore = 0;
-    $bestMatch = null;
+    // pastikan input selalu array
+    if (!is_array($foods)) {
+        $foods = [$foods];
+    }
 
-    foreach ($foodData as $item) {
-        foreach ($item["name_alias"] as $alias) {
-            $aliasLower = strtolower(trim($alias));
+    $results = [];
 
-            similar_text($search, $aliasLower, $percent);
+    foreach ($foods as $name_food_string) {
+        $search = strtolower(trim($name_food_string));
+        $bestScore = 0;
+        $bestMatch = null;
 
-            if ($percent > $bestScore) {
-                $bestScore = $percent;
-                $bestMatch = $item;
+        foreach ($foodData as $item) {
+            foreach ($item["name_alias"] as $alias) {
+                $aliasLower = strtolower(trim($alias));
+
+                similar_text($search, $aliasLower, $percent);
+
+                if ($percent > $bestScore) {
+                    $bestScore = $percent;
+                    $bestMatch = $item;
+                }
             }
+        }
+
+        // minimal 70% baru di-anggap valid
+        if ($bestScore >= 70 && $bestMatch !== null) {
+            $results[] = $bestMatch;
+        } else {
+            $results[] = null;
         }
     }
 
-    if ($bestScore < 70) {
-        return null;
-    }
-
-    return $bestMatch;
+    return $results;
 }
-
 
 function rotate_key() {
     static $index = 0;
 
     $apiKeys = [
-        "AIzaSyCW8OY1ePxwJPbi-hBmMn9_QZ9tUfRHp3g",
-        "AIzaSyBt0J2HltcWcVrJDd6RPc9iF8IPCilPI08",
-        "AIzaSyCxfAXDaHGarOhG-pI4ZTqbaUmbssCEYoQ"
+        "SECRET_API"
     ];
 
     $key = $apiKeys[$index];
@@ -66,36 +75,34 @@ function get_base64_mime_type($base64) {
 
 Route::post('/rv_forgot_password', function (Request $req) {
     try {
-        $req->validate([
+        $data = $req->validate([
             'email' => 'required|string|email|max:255'
         ]);
     } catch (ValidationException $e) {
-        return collect($e->errors())->flatten()->first();
+        return response()->json(['success' => false, 'message' => collect($e->errors())->flatten()->first()], 422);
     }
 
-    $user = User::where('email', $req->email)->first();
-
+    $user = User::where('email', $data['email'])->first();
     if (!$user) {
         return response()->json([
             'success' => false,
             'message' => 'Email tidak terdaftar!'
-        ]);
+        ], 404);
     }
 
-    PasswordReset::where('email', $req->email)->delete();
+    PasswordReset::where('email', $data['email'])->delete();
 
     $verification_code = random_int(100000, 999999);
-    $token_expires_at = now()->addMinutes(5);
 
     PasswordReset::create([
-        'email' => $req->email,
+        'email' => $data['email'],
         'ver_code' => $verification_code,
         'created_at' => now(),
     ]);
 
     try {
         Mail::to($user->email)->send(new ResetPasswordCode($verification_code));
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
         Log::error("Gagal kirim email reset password ke {$user->email}: " . $e->getMessage());
         return response()->json([
             'success' => false,
@@ -111,19 +118,16 @@ Route::post('/rv_forgot_password', function (Request $req) {
 
 Route::post('/forgot_password', function (Request $req) {
     try {
-        $req->validate([
+        $data = $req->validate([
             'email' => 'required|string|email|max:255',
             'ver_code' => 'required|integer|digits:6',
             'new_pass' => ['required', 'string', 'min:8', 'confirmed']
         ]);
     } catch (ValidationException $e) {
-        return response()->json([
-        'success' => false,
-        'message' => collect($e->errors())->flatten()->first()
-        ]);
+        return response()->json(['success' => false, 'message' => collect($e->errors())->flatten()->first()], 422);
     }
 
-    $passwordReset = PasswordReset::where('email', $req->email)->where('ver_code', $req->ver_code)->first();
+    $passwordReset = PasswordReset::where('email', $data['email'])->where('ver_code', $data['ver_code'])->first();
 
     if (!$passwordReset) {
         return response()->json([
@@ -132,7 +136,6 @@ Route::post('/forgot_password', function (Request $req) {
         ], 400);
     }
 
-    // check expire time
     $expirationTime = $passwordReset->created_at->addMinutes(5);
     if (now()->greaterThan($expirationTime)) {
         $passwordReset->delete();
@@ -142,7 +145,7 @@ Route::post('/forgot_password', function (Request $req) {
         ], 400);
     }
 
-    $user = User::where('email', $req->email)->first();
+    $user = User::where('email', $data['email'])->first();
 
     if (!$user) {
         return response()->json([
@@ -151,15 +154,15 @@ Route::post('/forgot_password', function (Request $req) {
         ], 404);
     }
 
-    $user->password = Hash::make($req->new_pass);
+    $user->password = Hash::make($data['new_pass']);
     $user->save();
 
     $passwordReset->delete();
 
     return response()->json([
         'success' => true,
-        'redirect' => route('login'),
-        'message' => 'Password berhasil diubah! Silakan login kembali.'
+        'redirect' => '/login',
+        'message' => 'Password berhasil di-reset. Silakan login dengan password baru Anda.'
     ]);
 });
 
@@ -186,19 +189,19 @@ Route::post("/predict_image", function (Request $req) {
     $curl = curl_init();
 
     curl_setopt_array($curl, [
-        CURLOPT_URL => "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" . rotate_key(),
+        CURLOPT_URL => "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=" . rotate_key(),
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_POST => true,
         CURLOPT_HTTPHEADER => [
             "Content-Type: application/json",
         ],
-        CURLOPT_POSTFIELDS => json_encode([
+        CURLOPT_POSTFIELDS => json_encode(value: [
             "contents" => [
                 [
                     "role" => "user",
                     "parts" => [
                         [
-                            "text" => "Analyze this food image and returns [\"food_name\"]. if its not a food, then return [\"unknown\"]. all case must be lower, return with indonesian name, and returns as it is."
+                            "text" => "Analyze this food image and returns [\"food_name\"]. if its not a food, then return [\"unknown\"]. if the image contains more than 1 foods, make it like this for example: [\"a\", \"b\", ...]. all case must be lower, return with indonesian name, and returns as it is."
                         ],
                         [
                             "inlineData" => [
@@ -216,14 +219,24 @@ Route::post("/predict_image", function (Request $req) {
     curl_close($curl);
 
     $data = json_decode($response, true);
+    if (!empty($data["error"])) {
+        return response([
+            'success' => false,
+            'message' => "Limit exceeded."
+        ]);
+    }
 
     $text = json_decode($data["candidates"][0]["content"]["parts"][0]["text"]) ?? null;
+    
+    if ($text[0] === "unknown") return response()->json([
+        'success' => false,
+    ]);
 
-    $result = calculate_name_alias_json($text[0]);
+    $result = calculate_name_alias_json($text);
 
     return response()->json([
         'success' => true,
-        'nama_makanan' => $text[0],
+        'nama_makanan' => $text,
         'result' => $result
     ]);
 });

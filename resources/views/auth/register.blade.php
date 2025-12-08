@@ -1,5 +1,5 @@
 {{-- resources/views/auth/register.blade.php --}}
-<x-layouts.app :title="'Register'">
+<x-layouts.appauth :title="'Register'">
 
     <div class="w-full min-h-screen flex items-center justify-center p-6">
         <div class="w-full max-w-5xl bg-white rounded-[32px] overflow-hidden shadow-lg grid grid-cols-1 md:grid-cols-2 min-h-[650px]">

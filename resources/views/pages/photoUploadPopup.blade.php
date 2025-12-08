@@ -30,7 +30,7 @@
 
         <!-- INFO -->
         <div class="mt-6 text-black space-y-2">
-            <p class="font-semibold">Nama Makanan : <span class="font-bold">Bubur Ayam</span></p>
+            <p class="font-semibold">Nama Makanan: <span class="font-bold">Bubur Ayam</span></p>
 
             <p class="font-semibold mt-3">Kandungan nutrisi dalam makanan :</p>
             <ul class="ml-4 space-y-1 text-sm">

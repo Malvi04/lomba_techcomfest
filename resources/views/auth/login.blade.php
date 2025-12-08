@@ -1,7 +1,7 @@
 {{-- resources/views/auth/login.blade.php --}}
-<x-layouts.app :title="'Login'">
+<x-layouts.appauth :title="'Login'">
     <div class="flex items-center justify-center">
-        <div class="w-full  max-w-5xl bg-white rounded-[32px] overflow-hidden shadow-lg grid grid-cols-1 md:grid-cols-2">
+        <div class="w-full max-w-5xl bg-white rounded-[32px] overflow-hidden shadow-lg grid grid-cols-1 md:grid-cols-2">
         {{-- LEFT --}}
         <div class="p-10 flex flex-col justify-between bg-gradient-to-b from-[#F37367] to-[#E85346] rounded-[32px]">
             <div class="flex mb-8">

@@ -11709,39 +11709,12 @@
     ]
   },
   {
-    "calories": "20",
-    "proteins": "1",
-    "fat": "0.2",
-    "carbohydrate": "3.5",
-    "name_alias": [
-      "tomat air (juice)"
-    ]
-  },
-  {
-    "calories": "20",
-    "proteins": "1",
-    "fat": "0.3",
-    "carbohydrate": "4.2",
-    "name_alias": [
-      "tomat masak"
-    ]
-  },
-  {
     "calories": "24",
     "proteins": "1.3",
     "fat": "0.5",
     "carbohydrate": "4.7",
     "name_alias": [
-      "tomat merah"
-    ]
-  },
-  {
-    "calories": "24",
-    "proteins": "2",
-    "fat": "0.7",
-    "carbohydrate": "3.3",
-    "name_alias": [
-      "tomat muda"
+      "tomat"
     ]
   },
   {
