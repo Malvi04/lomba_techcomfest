@@ -14,22 +14,26 @@ use Illuminate\Validation\ValidationException;
 Route::get('/services', function () {
     return view('pages.services');
 })->name('services');
+Route::get('/comingsoon', function () {
+    return view('pages.comingsoon');
+})->name('comingsoon');
 
 
 // end testing ui
 
 Route::get('/', function () {
-    if (!Auth::check()) return view('pages.homepage');
-    return redirect('dashboard');
-});
+    return view('pages.homepage');
+})->name('homepage');
+
 Route::get('/about', function() {
     if (!Auth::check()) return view('pages.about');
-    return redirect('dashboard');
+    return redirect('about');
 });
 
 Route::get('/dashboard', function () {
-    return view('pages.dashboard');
-})->name('dashboard');
+    if (!Auth::check())return view('pages.dashboard');
+    return redirect('dashboard');
+});
 
 Route::get('/hasil', function () {
     return view('pages.result');

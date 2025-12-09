@@ -154,6 +154,62 @@
 
     </section>
 
+    <!-- SECTION: Siapa yang cocok pakai glucoguide? -->
+    <section class="w-full bg-[#F5A7A7] py-24 px-16 font-sans text-white relative overflow-hidden">
+        <h1 class="text-center text-4xl font-bold mb-20">Siapa yang cocok pakai glucoguide ?</h1>
+
+
+        <div class="flex items-center justify-between gap-10 w-full">
+
+            <!-- LEFT CONTENT -->
+            <div class="flex flex-col space-y-20 w-1/2 pl-4">
+            <!-- ITEM 1 -->
+            <div>
+            <h2 class="text-2xl font-bold">Penderita diabetes</h2>
+            <p class="text-white/90 mt-3 text-lg leading-relaxed w-[420px]">Yang ingin memantau gula darah dan asupan nutrisi secara lebih teratur.</p>
+            </div>
+
+            <!-- ITEM 2 -->
+            <div class="ml-14">
+                <h2 class="text-2xl font-bold">Orang dengan resiko diabetes</h2>
+                <p class="text-white/90 mt-3 text-lg leading-relaxed w-[420px]">Memiliki gula darah tinggi, riwayat keluarga, atau pola makan kurang terkontrol.</p>
+            </div>
+
+            <!-- ITEM 3 -->
+            <div class="ml-24">
+                <h2 class="text-2xl font-bold">Siapapun yang peduli kesehatan</h2>
+                <p class="text-white/90 mt-3 text-lg leading-relaxed w-[420px]">Ingin membangun kebiasaan makan sehat sejak dini.</p>
+            </div>
+        </div>
+
+        <!-- RIGHT CONTENT (CIRCLES + LOGO) -->
+        <div class="relative w-1/2 flex items-center justify-center pr-10">
+
+
+            <!-- BIG WHITE CIRCLE -->
+            <div class="absolute right-0 w-[350px] h-[350px] bg-white rounded-full shadow-xl">
+                <div class="absolute mt-15 z-20">
+                    <img src="{{ Vite::asset('resources/images/gluco.png') }}" class="w-[350px] drop-shadow-xl flex items-center justify-center" />
+                </div>
+            </div>
+
+
+            <!-- MIDDLE WHITE CIRCLE (with question icons) -->
+            <div class="absolute right-[300px] w-[260px] h-[260px] bg-white mt-30 rounded-full  flex items-center justify-center z-9">
+                <img src="{{ Vite::asset('resources/images/about/ty.png') }}" class="w-[260px] opacity-90" />
+            </div>
+
+
+            <!-- GLUCOGUIDE LOGO -->
+            
+        </div>
+
+
+        </div>
+    </section>
+
+
+
     <!-- page kenapa harus -->
      <section class="w-full py-20 bg-[linear-gradient(180deg,#F5A7A7_50%,#FFD9D5_100%)] text-white">
 

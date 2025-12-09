@@ -106,7 +106,7 @@
 
     </div>
 
-    @include('pages.photoUploadPopup')
+    @include('popup.photoUploadPopup')
 
 </div>
 
