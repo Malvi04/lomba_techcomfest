@@ -27,7 +27,8 @@ class User extends Authenticatable
         'limit_kalori',
         'current_protein',
         'current_karbo',
-        'current_kalori'
+        'current_kalori',
+        'food_today'
     ];
 
     /**
@@ -55,7 +56,8 @@ class User extends Authenticatable
             'limit_kalori' => 'decimal:2',
             'current_protein' => 'decimal:2',
             'current_karbo' => 'decimal:2',
-            'current_kalori' => 'decimal:2'
+            'current_kalori' => 'decimal:2',
+            'food_today' => 'array'
         ];
     }
 }

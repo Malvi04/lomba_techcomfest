@@ -86,6 +86,41 @@ Route::post('/login', function (Request $req) {
     return redirect()->intended('/dashboard');
 });
 
+Route::middleware('auth')->post('/add_food_to_db', function (Request $req) {
+    if (!isset($req->food)) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Food harus diisi.'
+        ], 400);
+    }
+
+    if (!is_array($req->food)) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Food harus berbentuk array.'
+        ], 400);
+    }
+
+    if (empty($req->food)) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Food tidak boleh kosong.'
+        ], 400);
+    }
+
+    $user = Auth::user();
+    $user->food_today = [];
+    //$user->food_today = [...$user->food_today, $req->food];
+
+    $user->save();
+    
+    return response()->json([
+        'success' => true,
+        'user' => Auth::user(),
+        'food' => $req->food
+    ]);
+});
+
 Route::get('/logout', function (Request $req) {
     Auth::logout();
     $req->session()->invalidate();

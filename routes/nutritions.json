@@ -10661,7 +10661,7 @@
     "fat": "4.6",
     "carbohydrate": "1.6",
     "name_alias": [
-      "tahu"
+      "tahu", "tofu"
     ]
   },
   {
@@ -10670,7 +10670,7 @@
     "fat": "8.5",
     "carbohydrate": "2.5",
     "name_alias": [
-      "tahu goreng"
+      "tahu goreng", "tofu goreng"
     ]
   },
   {
@@ -10949,7 +10949,7 @@
     "fat": "32.9",
     "carbohydrate": "8.3",
     "name_alias": [
-      "telur ayam ceplok"
+      "telur ayam ceplok", "telur ceplok", "telur mata sapi", "telur goreng"
     ]
   },
   {
@@ -10958,7 +10958,7 @@
     "fat": "19.4",
     "carbohydrate": "1.4",
     "name_alias": [
-      "telur ayam dadar"
+      "telur dadar", "omlet"
     ]
   },
   {

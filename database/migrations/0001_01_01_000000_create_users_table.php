@@ -23,6 +23,7 @@ return new class extends Migration
             $table->decimal('current_protein', 8, 2)->nullable()->default(0);
             $table->decimal('current_karbo', 8, 2)->nullable()->default(0);
             $table->decimal('current_kalori', 8, 2)->nullable()->default(0);
+            $table->json('food_today')->default('[]');
             $table->rememberToken();
             $table->timestamps();
         });

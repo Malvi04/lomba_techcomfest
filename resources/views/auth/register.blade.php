@@ -214,4 +214,4 @@
     });
     </script>
 
-</x-layouts.app>
+</x-layouts.appauth>

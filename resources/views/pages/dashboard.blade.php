@@ -1,6 +1,7 @@
 <x-layouts.appdashboard title="Dashboard">
 
-<div x-data="{ photoOpen: false }">
+<div x-data="{ photoOpen: false }" id="popup"
+x-on:open-photo.window="photoOpen = true">
 
     <!-- PAGE WRAPPER -->
     <div class="min-h-screen bg-gradient-to-b from-[#E9A39A] to-[#C98C7E] p-8 text-white">
@@ -88,7 +89,14 @@
                 <span>25g</span>
                 <span>25g</span>
                 <span>25g</span>
-                <span>13%</span>
+            </div>
+        </div>
+        <div class="border border-white/70 rounded-full px-6 py-4 flex justify-between mb-4">
+            <p>Rendang</p>
+            <div class="flex gap-10 text-sm">
+                <span>25g</span>
+                <span>25g</span>
+                <span>25g</span>
             </div>
         </div>
 
@@ -128,10 +136,110 @@
 
     </div>
 
-    @include('pages.photoUploadPopup')
+    <div
+    x-transition.opacity
+    class="fixed inset-0 bg-black/40 flex items-center justify-center z-50" style="display: none;" id="upload_image_result"
+>
+    <div class="w-[681px] h-[683px] bg-gradient-to-b from-[#D88E86] to-[#F2C1BB]
+                rounded-[28px] shadow-xl p-6 flex flex-col justify-between">
+
+        <div class="flex items-center justify-between text-white font-semibold text-lg">
+            <div class="flex items-center gap-2">
+                <img src="{{ asset('images/icons/camera.png') }}" class="w-6 h-6">
+                <span>Konfirmasi foto</span>
+            </div>
+            
+            <button
+                class="text-white hover:text-gray-200 transition"
+                onclick="document.getElementById('upload_image_result').style.display='none'"
+                aria-label="Tutup"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        
+        <div
+            class="mt-4 flex-1 border-2 border-white rounded-[20px]
+                flex items-center justify-center bg-white/20"
+        >
+            <div class="overflow-hidden rounded-xl"><img
+                alt="Preview"
+                class="w-full h-full object-contain block"
+                id="image_food_preview"
+            ></div>
+        </div>
+
+        <div class="mt-2 text-black space-y-2">
+            <p class="font-semibold">Makanan yang terdeteksi: <span class="font-bold" id="nama_makanan">undefined</span></p>
+
+            <p class="font-semibold mt-3">Kandungan nutrisi dalam makanan</p>
+            <ul class="ml-4 space-y-1 text-sm">
+                <li id="total_protein">Protein: 0g</li>
+                <li id="total_karbohidrat">Karbohidrat: 0g</li>
+                <li id="total_kalori">Kalori: 0g</li>
+            </ul>
+        </div>
+
+        <div class="mt-6 flex justify-end gap-4">
+            <div x-data="upload_photo_food()">
+
+            <input 
+                type="file"
+                x-ref="uploadFoto"
+                accept="image/*"
+                class="hidden"
+                @change="onFile"
+            />
+            <button
+                type="button"
+                @click="$refs.uploadFoto.click()"
+                class="px-6 py-2 rounded-full bg-[#D98A85] text-white
+                    hover:bg-[#C97B75] transition"
+            >
+                Ganti Foto
+            </button>
+
+            <button
+                class="px-6 py-2 rounded-full bg-[#FF6A5E] text-white font-semibold
+                    hover:bg-[#E8574C] transition"
+            >
+                Konfirmasi
+            </button>
+        </div>
+
+    </div>
+</div>
+
 
 </div>
 <script>
+    // helper buat baca cookie
+function getCookie(name) {
+    return document.cookie
+        .split('; ')
+        .find(row => row.startsWith(name + '='))
+        ?.split('=')[1];
+}
+
+async function add_food_photo(foodArray) {
+  const xsrf = getCookie('XSRF-TOKEN');
+  if (!xsrf) throw new Error('XSRF-TOKEN cookie tidak ditemukan');
+
+  const res = await fetch('/add_food_to_db', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-XSRF-TOKEN': decodeURIComponent(xsrf)
+    },
+    body: JSON.stringify({ food: foodArray })
+  });
+
+  return res.json();
+}
+
 function upload_photo_food() {
   return {
     file: null,
@@ -148,7 +256,6 @@ function upload_photo_food() {
         return;
       }
 
-      // optional: ukuran sebelum base64
       if (f.size > this.maxBytes) {
         alert('Maksimal file ' + (this.maxBytes/1024/1024) + 'MB.');
         e.target.value = '';
@@ -161,12 +268,12 @@ function upload_photo_food() {
       const reader = new FileReader();
       reader.onload = () => {
         const dataUrl = reader.result;
-        this.sendBase64(dataUrl.split(',')[1], f.name);
+        this.sendBase64(dataUrl.split(',')[1], f.name, reader.result);
       };
       reader.readAsDataURL(f);
     },
 
-    async sendBase64(dataUrl, filename) {
+    async sendBase64(dataUrl, filename, read) {
       try {
         const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
 
@@ -182,16 +289,42 @@ function upload_photo_food() {
         });
 
         const json = await res.json();
-        if (!res.ok) throw json;
-        console.log('Upload sukses', json);
-        alert('Upload sukses!');
+
+        let total_kalori = 0;
+        let total_protein = 0;
+        let total_karbohidrat = 0;
+        let res_food = []
+
+        json.result.forEach(item => {
+            if (!item || item.calories === null || item.proteins === null || item.carbohydrate === null) return;
+            res_food.push(item.name_target)
+            total_kalori += Number(item.calories);
+            total_protein += Number(item.proteins);
+            total_karbohidrat += Number(item.carbohydrate);
+        });
+
+        if (!res_food.length || res_food[0] === "unknown") return alert("Gambar ini bukan makanan. Tolong upload gambar yang valid.")
+
+        let str;
+        if (res_food.length > 1) {
+            str = res_food.slice(0, -1).join(', ') + ' dan ' + res_food[res_food.length - 1];
+        } else {
+            str = res_food[0] ?? '';
+        }
+
+        document.getElementById("image_food_preview").src = read;
+        document.getElementById("nama_makanan").innerHTML = str;
+        document.getElementById("total_protein").innerHTML = `Protein: ${total_protein.toFixed(2)}g`
+        document.getElementById("total_kalori").innerHTML = `Kalori: ${total_kalori.toFixed(2)}g`
+        document.getElementById("total_karbohidrat").innerHTML = `Karbohidrat: ${total_karbohidrat.toFixed(2)}g`
+        document.getElementById("upload_image_result").style = "";
       } catch (err) {
         console.error(err);
-        alert('Upload gagal. Lihat console.');
+        alert('Upload gagal! mohon kirim gambar yang valid.');
       }
     }
   }
+
 }
 </script>
-
-</x-layouts.app>
+</x-layouts.appdashboard>
