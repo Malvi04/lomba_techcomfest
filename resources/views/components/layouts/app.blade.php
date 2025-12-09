@@ -18,6 +18,6 @@
     </div>
     {{-- Contact Popup --}}
     @include('components.popup.contactUs')
-    <x-popup.contactUs />
+
 </body>
 </html>

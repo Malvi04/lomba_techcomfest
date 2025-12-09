@@ -80,7 +80,7 @@
                 </div>
 
                 <!-- TEXT VERTICAL -->
-                <div class="absolute left-[-40px] bottom-[200px] rotate-[-90deg]">
+                <div class="absolute left-[-60px] bottom-[200px] rotate-[-90deg]">
                     <p class="text-3xl font-bold tracking-wide opacity-100">
                         Contact Us
                     </p>
@@ -97,7 +97,7 @@
             </div>
 
             <!-- RIGHT FORM -->
-            <div class="flex-1 p-10">
+            <div class="flex-1 pl-20 pr-10 py-10">
 
                 <!-- Close -->
                 <button
@@ -119,18 +119,18 @@
                     <input
                         type="text"
                         placeholder="Masukkan Nama"
-                        class="w-full bg-[#E6E6E6] rounded-lg px-4 py-3 outline-none"
+                        class="w-full bg-[#E6E6E6] rounded-lg px-4 py-3 outline-none placeholder-gray-500"
                     >
 
                     <input
                         type="email"
                         placeholder="Masukkan Email"
-                        class="w-full bg-[#E6E6E6] rounded-lg px-4 py-3 outline-none"
+                        class="w-full bg-[#E6E6E6] rounded-lg px-4 py-3 outline-none placeholder-gray-500"
                     >
 
                     <textarea
                         placeholder="Tulis Pesan ..."
-                        class="w-full h-[140px] bg-[#E6E6E6] rounded-lg px-4 py-3 outline-none resize-none">
+                        class="relative z-20 w-full h-[140px] bg-[#E6E6E6] rounded-lg px-4 py-3 outline-none resize-none placeholder-gray-500">
                     </textarea>
 
                 </div>
