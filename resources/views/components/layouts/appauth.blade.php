@@ -12,11 +12,10 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased bg-white">
-    <div class="pt-20">
+<body class="antialiased bg-white flex items-center justify-center min-h-screen">
+    <div>
         {{ $slot }}
     </div>
-    @include('components.popup.contactUs')
-    <x-popup.contactUs />
 </body>
+
 </html>
