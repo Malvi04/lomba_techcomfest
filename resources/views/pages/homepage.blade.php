@@ -45,6 +45,104 @@
         </div>
     </section>
 
+    <!-- grafik -->
+    <section class="bg-[#E8A8A2] py-20 px-6 md:px-16">
+        <div class="max-w-7xl mx-auto">
+
+            <!-- TITLE -->
+            <h2 class="text-center text-2xl md:text-3xl font-bold text-white mb-10 leading-tight">
+                Diabetes Terus Meningkat, <br>
+                Kesadaran Harus Dimulai Sekarang
+            </h2>
+
+            <!-- GRID: LEFT TEXT — GRAPH — RIGHT TEXT -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+
+                <!-- LEFT TEXT -->
+                <div class="text-white text-left md:pr-8">
+                    <p class="font-medium mb-3">Jumlah penderita diabetes di Indonesia</p>
+                    <p class="font-bold">
+                        meningkat hampir 4 <br>
+                        kali lipat dalam 24 <br>
+                        tahun terakhir.
+                    </p>
+                </div>
+
+                <!-- SVG GRAPH -->
+                <div class="flex justify-center">
+    <svg width="500" height="260" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- GRID LINES -->
+        <g stroke="#f5c1bc" stroke-width="1">
+            <line x1="80" y1="60" x2="820" y2="60"/>
+            <line x1="80" y1="110" x2="820" y2="110"/>
+            <line x1="80" y1="160" x2="820" y2="160"/>
+            <line x1="80" y1="210" x2="820" y2="210"/>
+            <line x1="80" y1="260" x2="820" y2="260"/>
+        </g>
+
+        <!-- DATA LINE -->
+        <polyline 
+            fill="none"
+            stroke="#6A3A37"
+            stroke-width="4"
+            points="
+                80,250
+                260,230
+                440,165
+                650,120
+            "
+        />
+
+        <!-- DATA POINTS -->
+        <circle cx="80" cy="250" r="7" fill="#6A3A37"/>
+        <circle cx="260" cy="230" r="7" fill="#6A3A37"/>
+        <circle cx="440" cy="165" r="7" fill="#6A3A37"/>
+        <circle cx="650" cy="120" r="7" fill="#6A3A37"/>
+
+        <!-- YEAR LABELS -->
+        <text x="80"  y="320" text-anchor="middle" fill="#fff" font-size="18">2000</text>
+        <text x="260" y="320" text-anchor="middle" fill="#fff" font-size="18">2011</text>
+        <text x="440" y="320" text-anchor="middle" fill="#fff" font-size="18">2016</text>
+        <text x="650" y="320" text-anchor="middle" fill="#fff" font-size="18">2024</text>
+
+        <!-- Y VALUE LABELS -->
+        <text x="20" y="65" fill="#fff" font-size="16">30,000</text>
+        <text x="20" y="115" fill="#fff" font-size="16">25,000</text>
+        <text x="20" y="165" fill="#fff" font-size="16">20,000</text>
+        <text x="20" y="215" fill="#fff" font-size="16">15,000</text>
+        <text x="20" y="265" fill="#fff" font-size="16">10,000</text>
+
+    </svg>
+</div>
+
+
+
+                <!-- RIGHT TEXT -->
+                <div class="text-white text-left md:pl-30 pt-40">
+                    <p>
+                        Memantau asupan <br>
+                        dan kebiasaan hari <br>
+                        ini bisa mencegah <br>
+                        risiko di masa <br>
+                        depan.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- FOOTNOTE -->
+            <p class="text-center text-white mt-8 text-sm">
+                Sumber: International Diabetes Federation (IDF)
+            </p>
+
+        </div>
+    </section>
+
+
+
+
+
     <!-- SECTION: Mengapa Monitoring Gula Darah Penting -->
 
     <section

@@ -12,9 +12,18 @@ use Illuminate\Validation\ValidationException;
 Route::get('/services', function () {
     return Auth::check() ? redirect("/dashboard") : view('pages.services');
 })->name('services');
+Route::get('/comingsoon', function () {
+    return view('pages.comingsoon');
+})->name('comingsoon');
 
 Route::get('/', function () {
-    return Auth::check() ? redirect("/dashboard") : view('pages.homepage');
+
+    return view('pages.homepage');
+})->name('homepage');
+
+Route::get('/about', function() {
+    if (!Auth::check()) return view('pages.about');
+    return redirect('about');
 });
 
 Route::get('/about', function() {

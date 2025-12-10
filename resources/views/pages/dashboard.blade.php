@@ -136,6 +136,9 @@ x-on:open-photo.window="photoOpen = true">
 
     </div>
 
+
+    @include('popup.photoUploadPopup')
+
     <div
     x-transition.opacity
     class="fixed inset-0 bg-black/40 flex items-center justify-center z-50" style="display: none;" id="upload_image_result"
