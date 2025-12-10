@@ -13,10 +13,9 @@
 </head>
 
 <body class="antialiased bg-white">
-    <div class="pt-20">
+    <div>
         {{ $slot }}
     </div>
-    @include('components.popup.contactUs')
-
 </body>
+
 </html>

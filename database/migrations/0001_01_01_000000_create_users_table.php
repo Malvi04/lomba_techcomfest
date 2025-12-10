@@ -17,6 +17,13 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->decimal('limit_protein', 8, 2)->nullable()->default(100);
+            $table->decimal('limit_karbo', 8, 2)->nullable()->default(100);
+            $table->decimal('limit_kalori', 8, 2)->nullable()->default(100);
+            $table->decimal('current_protein', 8, 2)->nullable()->default(0);
+            $table->decimal('current_karbo', 8, 2)->nullable()->default(0);
+            $table->decimal('current_kalori', 8, 2)->nullable()->default(0);
+            $table->json('food_today')->default('[]');
             $table->rememberToken();
             $table->timestamps();
         });
