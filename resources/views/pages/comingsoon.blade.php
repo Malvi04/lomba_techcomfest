@@ -1,21 +1,36 @@
-<x-layouts.app title="Coming Soon">
-    <!-- COMING SOON PAGE -->
-    <section class="relative w-full h-screen flex flex-col items-center justify-center font-sans overflow-hidden">
-        <!-- Background Image -->
-        <img src="{{ Vite::asset('resources/images/comingsoon/bg-comingsoon.png') }}" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+<x-layouts.appcom title="Coming Soon">
+    <section class="relative w-full h-screen flex flex-col items-center justify-center font-sans overflow-hidden !pt-0">
 
-        <!-- Big Gear Left -->
-        <img src="{{ Vite::asset('resources/images/comingsoon/gear-left.png') }}" class="absolute bottom-[-60px] left-[-60px] w-[350px] opacity-70" />
+        <!-- Background -->
+        <img src="{{ Vite::asset('resources/images/comingsoon/bg-guldar.jpg') }}"
+             class="absolute inset-0 w-full h-full object-cover z-0">
 
-        <!-- Big Gear Right -->
-        <img src="{{ Vite::asset('resources/images/comingsoon/gear-right.png') }}" class="absolute top-[-80px] right-[-80px] w-[500px] opacity-70" />
+        <!-- Overlay (harus di atas background, tapi di bawah gear!) -->
+        <div class="absolute inset-0 bg-black/40 z-[5]"></div>
 
-        <!-- MAIN TEXT -->
-        <h1 class="text-6xl font-bold text-red-600 drop-shadow-lg mb-6">Coming Soon</h1>
+        <!-- Gear Left -->
+        <img src="{{ Vite::asset('resources/images/comingsoon/unger.png') }}"
+             class="absolute bottom-[-50px] left-[-100px] w-[550px] opacity-80 z-[10]">
 
-        <p class="text-white text-2xl font-light drop-shadow mb-10">Get ready! something really cool is comming!</p>
+        <!-- Gear Right -->
+        <img src="{{ Vite::asset('resources/images/comingsoon/gear1.png') }}"
+             class="absolute top-[-80px] right-[-120px] w-[900px] opacity-80 z-[10]">
 
-        <!-- BUTTON -->
-        <a href="/" class="bg-[#EFA8A4] text-white text-2xl font-semibold px-16 py-3 rounded-md shadow-md hover:opacity-90 transition-all duration-200">Back</a>
+        <!-- Content -->
+        <div class="relative z-[20] flex flex-col items-center text-center px-6">
+            <h1 class="text-6xl md:text-7xl font-bold text-red-600 mb-6 tracking-wide drop-shadow-lg">
+                Coming Soon
+            </h1>
+
+            <p class="text-white text-xl md:text-3xl font-light mb-12 drop-shadow-lg max-w-2xl">
+                Get ready! something really cool is comming!
+            </p>
+
+            <a href="/"
+               class="bg-[#F1A39D] hover:bg-[#E89885] text-white text-lg md:text-2xl font-semibold px-12 md:px-20 py-3 md:py-4 rounded-md shadow-lg transition-all duration-200">
+               Back
+            </a>
+        </div>
     </section>
-</x-layouts.app>
+</x-layouts.appcom>
+

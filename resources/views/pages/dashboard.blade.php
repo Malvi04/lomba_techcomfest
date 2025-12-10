@@ -9,10 +9,10 @@ x-on:open-photo.window="photoOpen = true">
         <!-- TOP BAR -->
         <div class="flex justify-between items-center mb-6">
             <div class="flex items-center gap-3">
-                <img src="{{ asset('images/icons/user.png') }}" class="w-10 h-10">
+                <img src="{{ Vite::asset('resources/images/dashboard/profile.png') }}" class="w-10 h-10">
                 <span class="font-semibold">Halo, {{ $user->username }}!</span>
             </div>
-            <img src="{{ asset('images/icons/setting.png') }}" class="w-8 h-8">
+            <img src="{{ Vite::asset('resources/images/dashboard/setting.png') }}" class="w-8 h-8">
         </div>
 
         <!-- PROGRESS CARD -->
@@ -20,7 +20,7 @@ x-on:open-photo.window="photoOpen = true">
 
             <div class="w-2/3">
                 <div class="flex items-center gap-2 mb-3">
-                    <img src="{{ asset('images/icons/chart.png') }}" class="w-5">
+                    <img src="{{ Vite::asset('resources/images/dashboard/progres.png') }}" class="w-5">
                     <p class="font-semibold">Progress Kamu</p>
                 </div>
 
@@ -61,17 +61,17 @@ x-on:open-photo.window="photoOpen = true">
                 </p>
             </div>
             <div class="bg-[#FF6A5E] rounded-2xl p-5 flex justify-between items-center">
-                <img src="{{ asset('images/icons/bed.png') }}" class="w-10">
+                <img src="{{ Vite::asset('resources/images/dashboard/tidur.png') }}" class="w-10">
                 <span>→</span>
             </div>
 
             <div class="bg-[#FF6A5E] rounded-2xl p-5 flex justify-between items-center">
-                <img src="{{ asset('images/icons/run.png') }}" class="w-10">
+                <img src="{{ Vite::asset('resources/images/dashboard/run.png') }}" class="w-10">
                 <span>→</span>
             </div>
 
             <div class="bg-[#FF6A5E] rounded-2xl p-5 flex justify-between items-center">
-                <img src="{{ asset('images/icons/lamp.png') }}" class="w-10">
+                <img src="{{ Vite::asset('resources/images/dashboard/ide.png') }}" class="w-10">
                 <span>→</span>
             </div>
         </div>
@@ -137,7 +137,7 @@ x-on:open-photo.window="photoOpen = true">
     </div>
 
 
-    @include('popup.photoUploadPopup')
+    @include('components.popup.photoUploadPopup')
 
     <div
     x-transition.opacity
