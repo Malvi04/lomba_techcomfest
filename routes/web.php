@@ -52,6 +52,11 @@ Route::get('/forgot_password', function () {
     return Auth::check() ? redirect('/dashboard') : view('auth.forgot_password');
 })->name('forgot_password');
 
+Route::get('/assesment', function () {
+    return view('assesment.index');
+})->name('assesment');
+
+
 Route::post('/register', function (Request $req) {
     try {
         $data = $req->validate([
