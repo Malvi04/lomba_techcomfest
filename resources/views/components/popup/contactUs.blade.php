@@ -56,7 +56,7 @@
                 >
 
                 <!-- CONTACT LIST -->
-                <div class="mt-6 space-y-6 text-sm px-6">
+                <div class="mt-6 space-y-6 text-sm px-6 translate-x-5">
 
                     <div class="flex gap-3 items-start">
                         <img src="{{ Vite::asset('resources/images/icons/locate.png') }}" class="w-5 mt-1">
@@ -80,8 +80,8 @@
                 </div>
 
                 <!-- TEXT VERTICAL -->
-                <div class="absolute left-[-60px] bottom-[200px] rotate-[-90deg]">
-                    <p class="text-3xl font-bold tracking-wide opacity-100">
+                <div class="absolute left-[-70px] bottom-[235px] rotate-[-90deg]">
+                    <p class="text-3xl font-bold tracking-widest tracking-wide opacity-100">
                         Contact Us
                     </p>
                 </div>
@@ -130,7 +130,7 @@
 
                     <textarea
                         placeholder="Tulis Pesan ..."
-                        class="relative z-20 w-full h-[140px] bg-[#E6E6E6] rounded-lg px-4 py-3 outline-none resize-none placeholder-gray-500">
+                        class="w-full h-[140px] bg-[#E6E6E6] rounded-lg px-4 py-3 outline-none resize-none placeholder-gray-600">
                     </textarea>
 
                 </div>

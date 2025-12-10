@@ -14,7 +14,7 @@
 
 <body class="antialiased bg-white">
     <div class="pt-20">
-        {{ $slot }}
+        @yield('content')
     </div>
     @include('components.popup.contactUs')
 

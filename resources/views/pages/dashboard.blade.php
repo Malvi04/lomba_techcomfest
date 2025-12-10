@@ -137,7 +137,7 @@ x-on:open-photo.window="photoOpen = true">
     </div>
 
 
-    @include('popup.photoUploadPopup')
+    @include('components.popup.photoUploadPopup')
 
     <div
     x-transition.opacity
