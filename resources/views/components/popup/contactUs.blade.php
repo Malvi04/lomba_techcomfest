@@ -52,7 +52,7 @@
                 <!-- Logo -->
                 <img
                     src="{{ Vite::asset('resources/images/gluco.png') }}"
-                    class="w-12 mb-6"
+                    class="w-20 mb-6"
                 >
 
                 <!-- CONTACT LIST -->

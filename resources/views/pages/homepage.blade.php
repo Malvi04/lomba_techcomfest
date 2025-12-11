@@ -12,9 +12,11 @@
                 <p class="text-white/90 text-lg md:text-xl max-w-xl leading-relaxed">
                     Solusi nutrisi seimbang untuk membantu menjaga kadar gula darah tetap stabil setiap hari
                 </p>
-                <button class="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-lg shadow transition">
-                    Mulai hidup sehat disini
-                </button>
+                
+                    <a href="/login"><button class="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-lg shadow transition">
+                        Mulai Hidup Sehat Disini
+                    </button></a>
+
             </div>
             <!-- RIGHT -->
             <div class="flex justify-center md:justify-end">
@@ -47,7 +49,7 @@
 
     <!-- grafik -->
     <section class="bg-[#E8A8A2] py-20 px-6 md:px-16">
-        <div class="max-w-7xl mx-auto">
+        <div class="w-full mx-auto">
 
             <!-- TITLE -->
             <h2 class="text-center text-2xl md:text-3xl font-bold text-white mb-10 leading-tight">
@@ -70,51 +72,51 @@
 
                 <!-- SVG GRAPH -->
                 <div class="flex justify-center">
-    <svg width="500" height="260" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="700" height="260" viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg">
 
-        <!-- GRID LINES -->
-        <g stroke="#f5c1bc" stroke-width="1">
-            <line x1="80" y1="60" x2="820" y2="60"/>
-            <line x1="80" y1="110" x2="820" y2="110"/>
-            <line x1="80" y1="160" x2="820" y2="160"/>
-            <line x1="80" y1="210" x2="820" y2="210"/>
-            <line x1="80" y1="260" x2="820" y2="260"/>
-        </g>
+                        <!-- GRID LINES -->
+                        <g stroke="#f5c1bc" stroke-width="1">
+                            <line x1="80" y1="60" x2="820" y2="60"/>
+                            <line x1="80" y1="110" x2="820" y2="110"/>
+                            <line x1="80" y1="160" x2="820" y2="160"/>
+                            <line x1="80" y1="210" x2="820" y2="210"/>
+                            <line x1="80" y1="260" x2="820" y2="260"/>
+                        </g>
 
-        <!-- DATA LINE -->
-        <polyline 
-            fill="none"
-            stroke="#6A3A37"
-            stroke-width="4"
-            points="
-                80,250
-                260,230
-                440,165
-                650,120
-            "
-        />
+                        <!-- DATA LINE -->
+                        <polyline 
+                            fill="none"
+                            stroke="#6A3A37"
+                            stroke-width="4"
+                            points="
+                                80,250
+                                260,230
+                                440,165
+                                650,120
+                            "
+                        />
 
-        <!-- DATA POINTS -->
-        <circle cx="80" cy="250" r="7" fill="#6A3A37"/>
-        <circle cx="260" cy="230" r="7" fill="#6A3A37"/>
-        <circle cx="440" cy="165" r="7" fill="#6A3A37"/>
-        <circle cx="650" cy="120" r="7" fill="#6A3A37"/>
+                        <!-- DATA POINTS -->
+                        <circle cx="80" cy="250" r="7" fill="#6A3A37"/>
+                        <circle cx="260" cy="230" r="7" fill="#6A3A37"/>
+                        <circle cx="440" cy="165" r="7" fill="#6A3A37"/>
+                        <circle cx="650" cy="120" r="7" fill="#6A3A37"/>
 
-        <!-- YEAR LABELS -->
-        <text x="80"  y="320" text-anchor="middle" fill="#fff" font-size="18">2000</text>
-        <text x="260" y="320" text-anchor="middle" fill="#fff" font-size="18">2011</text>
-        <text x="440" y="320" text-anchor="middle" fill="#fff" font-size="18">2016</text>
-        <text x="650" y="320" text-anchor="middle" fill="#fff" font-size="18">2024</text>
+                        <!-- YEAR LABELS -->
+                        <text x="80"  y="320" text-anchor="middle" fill="#fff" font-size="18">2000</text>
+                        <text x="260" y="320" text-anchor="middle" fill="#fff" font-size="18">2011</text>
+                        <text x="440" y="320" text-anchor="middle" fill="#fff" font-size="18">2016</text>
+                        <text x="650" y="320" text-anchor="middle" fill="#fff" font-size="18">2024</text>
 
-        <!-- Y VALUE LABELS -->
-        <text x="20" y="65" fill="#fff" font-size="16">30,000</text>
-        <text x="20" y="115" fill="#fff" font-size="16">25,000</text>
-        <text x="20" y="165" fill="#fff" font-size="16">20,000</text>
-        <text x="20" y="215" fill="#fff" font-size="16">15,000</text>
-        <text x="20" y="265" fill="#fff" font-size="16">10,000</text>
+                        <!-- Y VALUE LABELS -->
+                        <text x="20" y="65" fill="#fff" font-size="16">30,000</text>
+                        <text x="20" y="115" fill="#fff" font-size="16">25,000</text>
+                        <text x="20" y="165" fill="#fff" font-size="16">20,000</text>
+                        <text x="20" y="215" fill="#fff" font-size="16">15,000</text>
+                        <text x="20" y="265" fill="#fff" font-size="16">10,000</text>
 
-    </svg>
-</div>
+                    </svg>
+                </div>
 
 
 
@@ -185,9 +187,12 @@
                 </div>
 
                 <!-- CTA Button -->
-                <button class="mt-4 bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-lg shadow transition">
-                    Mulai Sekarang
-                </button>
+                 <a href="/login">
+                    <button class="mt-4 bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-lg shadow transition">
+                        Mulai Sekarang
+                    </button>
+                 </a>
+                
             </div>
         </div>
     </section>
