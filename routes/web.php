@@ -26,6 +26,11 @@ Route::get('/about', function() {
     return redirect('about');
 });
 
+Route::get('/sleep-tracker', function () {
+    return view('pages.sleep-tracking');
+})->name('sleep.tracker');
+
+
 Route::get('/about', function() {
     return Auth::check() ? redirect("/dashboard") : view('pages.about');
 })->name('about');
