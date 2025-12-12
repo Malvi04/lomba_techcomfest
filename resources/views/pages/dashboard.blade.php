@@ -9,10 +9,10 @@ x-on:open-photo.window="photoOpen = true">
         <!-- TOP BAR -->
         <div class="flex justify-between items-center mb-6">
             <div class="flex items-center gap-3">
-                <img src="{{ Vite::asset('resources/images/dashboard/profile.png') }}" class="w-10 h-10">
+                <img src="{{ asset('images/icons/profile.png') }}" class="w-10 h-10">
                 <span class="font-semibold">Halo, {{ $user->username }}!</span>
             </div>
-            <img src="{{ Vite::asset('resources/images/dashboard/setting.png') }}" class="w-8 h-8">
+            <img src="{{ asset('images/icons/setting.png') }}" class="w-8 h-8">
         </div>
 
         <!-- PROGRESS CARD -->
@@ -20,58 +20,49 @@ x-on:open-photo.window="photoOpen = true">
 
             <div class="w-2/3">
                 <div class="flex items-center gap-2 mb-3">
-                    <img src="{{ Vite::asset('resources/images/dashboard/progres.png') }}" class="w-5">
+                    <img src="{{ asset('images/icons/progres.png') }}" class="w-5">
                     <p class="font-semibold">Progress Kamu</p>
                 </div>
 
                 <div class="grid grid-cols-3 gap-6 text-sm mb-3">
                     <p>Protein<br>
-                        <b>{{ rtrim(rtrim($user->current_protein, '0'), '.') }} g</b> / <b>{{ rtrim(rtrim($user->limit_protein, '0'), '.') }}g</b>
+                        <b>{{ rtrim(rtrim($user->current_protein, '0'), '.') }}g</b> / <b>{{ rtrim(rtrim($user->limit_protein, '0'), '.') }}g</b>
                     </p>
                     <p>Karbo<br>
-                        <b>{{ rtrim(rtrim($user->current_karbo, '0'), '.') }} g</b> / <b>{{ rtrim(rtrim($user->limit_karbo, '0'), '.') }}g</b>
+                        <b>{{ rtrim(rtrim($user->current_karbo, '0'), '.') }}g</b> / <b>{{ rtrim(rtrim($user->limit_karbo, '0'), '.') }}g</b>
                     </p>
                     <p>Kalori<br>
-                        <b>{{ rtrim(rtrim($user->current_kalori, '0'), '.') }} g</b> / <b>{{ rtrim(rtrim($user->limit_kalori, '0'), '.') }}g</b>
+                        <b>{{ rtrim(rtrim($user->current_kalori, '0'), '.') }}g</b> / <b>{{ rtrim(rtrim($user->limit_kalori, '0'), '.') }}g</b>
                     </p>
                 </div>
 
                 <div class="relative w-full h-4 bg-white/50 rounded-full overflow-hidden">
-                    <div class="absolute left-0 top-0 h-full w-[70%] bg-white rounded-full"></div>
+                    <div id="control_bar_1" class="absolute left-0 top-0 h-full w-[0%] bg-white rounded-full"></div>
                 </div>
-                <p class="text-center mt-1 text-sm">70%</p>
+                <p id="persen_1" class="text-center mt-1 text-sm">0%</p>
             </div>
 
             <div class="w-24 h-24 rounded-full border-[10px] border-red-900/40 flex items-center justify-center">
-                <span class="text-xl font-bold">70%</span>
+                <span id="persen_2" class="text-xl font-bold">0%</span>
             </div>
 
         </div>
 
         <!-- NUTRITION -->
         <p class="mb-4 text-lg font-semibold">Nutrisi yang harus kamu penuhi hari ini :</p>
-
-        <div class="grid grid-cols-4 gap-4 mb-8">
-            <div class="bg-gradient-to-b from-[#FF6A5E] to-[#FF4D4D] rounded-2xl p-5">
-            <p class="font-semibold mb-3">Protein · Karbo · Kalori</p>
-                <p>
-                    {{ rtrim(rtrim($user->limit_protein, '0'), '.') }}g · 
-                    {{ rtrim(rtrim($user->limit_karbo, '0'), '.') }}g · 
-                    {{ rtrim(rtrim($user->limit_kalori, '0'), '.') }}g
-                </p>
-            </div>
-            <div class="bg-[#FF6A5E] rounded-2xl p-5 flex justify-between items-center">
-                <img src="{{ Vite::asset('resources/images/dashboard/tidur.png') }}" class="w-10">
+        <div class="grid grid-cols-3 gap-4 mb-8 justify-center">
+            <div class="bg-[#FF6A5E] rounded-2xl p-5 flex justify-between items-center justify-center">
+                <img src="{{ asset('images/icons/tidur.png') }}" class="w-10">
                 <span>→</span>
             </div>
 
-            <div class="bg-[#FF6A5E] rounded-2xl p-5 flex justify-between items-center">
-                <img src="{{ Vite::asset('resources/images/dashboard/run.png') }}" class="w-10">
+            <div class="bg-[#FF6A5E] rounded-2xl p-5 flex justify-between items-center justify-center">
+                <img src="{{ asset('images/icons/run.png') }}" class="w-10">
                 <span>→</span>
             </div>
 
-            <div class="bg-[#FF6A5E] rounded-2xl p-5 flex justify-between items-center">
-                <img src="{{ Vite::asset('resources/images/dashboard/ide.png') }}" class="w-10">
+            <div class="bg-[#FF6A5E] rounded-2xl p-5 flex justify-between items-center justify-center">
+                <img src="{{ asset('images/icons/ide.png') }}" class="w-10">
                 <span>→</span>
             </div>
         </div>
@@ -83,24 +74,11 @@ x-on:open-photo.window="photoOpen = true">
             <p>Mau makan apa hari ini?</p>
         </div>
 
-        <div class="border border-white/70 rounded-full px-6 py-4 flex justify-between mb-4">
-            <p>Rendang</p>
-            <div class="flex gap-10 text-sm">
-                <span>25g</span>
-                <span>25g</span>
-                <span>25g</span>
-            </div>
-        </div>
-        <div class="border border-white/70 rounded-full px-6 py-4 flex justify-between mb-4">
-            <p>Rendang</p>
-            <div class="flex gap-10 text-sm">
-                <span>25g</span>
-                <span>25g</span>
-                <span>25g</span>
-            </div>
+        <div id="item-makanan">
+            
         </div>
 
-        <button class="border border-white/70 rounded-full py-4 w-full mb-6">
+        <button class="border border-white/70 rounded-full py-4 w-full mb-6 flex flex-col items-center gap-3 hover:bg-white/10 transition" onclick="add_food_manual()">
             + Tambah Makanan
         </button>
 
@@ -116,10 +94,11 @@ x-on:open-photo.window="photoOpen = true">
             />
 
             <button
+                id="upload_foto_button"
                 type="button"
                 @click="$refs.uploadFoto.click()"
                 class="w-full border-2 border-dashed border-white/70 rounded-3xl p-16
-                    flex flex-col items-center gap-3 hover:bg-white/10 transition"
+                       flex flex-col items-center gap-3 hover:bg-white/10 transition"
             >
                 <img src="{{ Vite::asset('resources/images/icons/camera.png') }}" class="w-20">
                 <p class="font-medium">+ Tambahkan dengan foto (Max: 2MB)</p>
@@ -135,9 +114,6 @@ x-on:open-photo.window="photoOpen = true">
         </div>
 
     </div>
-
-
-    @include('components.popup.photoUploadPopup')
 
     <div
     x-transition.opacity
@@ -196,6 +172,7 @@ x-on:open-photo.window="photoOpen = true">
                 @change="onFile"
             />
             <button
+                id="ganti_foto_button"
                 type="button"
                 @click="$refs.uploadFoto.click()"
                 class="px-6 py-2 rounded-full bg-[#D98A85] text-white
@@ -205,20 +182,44 @@ x-on:open-photo.window="photoOpen = true">
             </button>
 
             <button
+                onclick="add_food_photo()"
+                id="konfirmasi_button"
                 class="px-6 py-2 rounded-full bg-[#FF6A5E] text-white font-semibold
                     hover:bg-[#E8574C] transition"
             >
                 Konfirmasi
             </button>
         </div>
-
     </div>
 </div>
-
-
-</div>
 <script>
-    // helper buat baca cookie
+const current_protein = {{ $user->current_protein }};
+const current_karbo = {{ $user->current_karbo }};
+const current_kalori = {{ $user->current_kalori }};
+const limit_protein = {{ $user->limit_protein }};
+const limit_karbo = {{ $user->limit_karbo }};
+const limit_kalori = {{ $user->limit_kalori }};
+const food_today = @json($user->food_today);
+
+let current_scan_food = null;
+
+function generateRandomString(length) {
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = '';
+
+    for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    return result;
+}
+
+function toPercent(value, limit) {
+    if (!limit || limit === 0) return 0;
+    let p = (value / limit) * 100;
+    return Math.min(p, 100); // biar ga lewat 100%
+}
+
 function getCookie(name) {
     return document.cookie
         .split('; ')
@@ -226,21 +227,138 @@ function getCookie(name) {
         ?.split('=')[1];
 }
 
-async function add_food_photo(foodArray) {
-  const xsrf = getCookie('XSRF-TOKEN');
-  if (!xsrf) throw new Error('XSRF-TOKEN cookie tidak ditemukan');
+async function add_food_manual() {
+    const name = prompt("Masukkan nama makanan yang ingin ditambahkan");
+    if (!name) return;
 
-  const res = await fetch('/add_food_to_db', {
-    method: 'POST',
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-XSRF-TOKEN': decodeURIComponent(xsrf)
-    },
-    body: JSON.stringify({ food: foodArray })
-  });
+    const xsrf = getCookie('XSRF-TOKEN');
+    if (!xsrf) throw new Error('XSRF-TOKEN cookie tidak ditemukan');
 
-  return res.json();
+    const res = await fetch('/get_food', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-XSRF-TOKEN': decodeURIComponent(xsrf)
+        },
+        body: new URLSearchParams({ name }).toString()
+    });
+    
+    const res_json = await res.json();
+    if (res_json["status"] === false) return alert("Error: " + res_json["message"]);
+    
+    if (confirm(`Makanan terdeteksi: ${res_json.result[0].name_target}\nKalori: ${res_json.result[0].calories}g\nProtein: ${res_json.result[0].proteins}g\nKarbo: ${res_json.result[0].carbohydrate}g\n\nApakah anda ingin menambahkan makanan ini?`)) {
+        const xsrf = getCookie('XSRF-TOKEN');
+        if (!xsrf) throw new Error('XSRF-TOKEN cookie tidak ditemukan');
+
+        res_json.result[0].id = generateRandomString(32);
+        delete res_json.result[0].name_alias;
+
+        const res = await fetch('/add_food_to_db', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-XSRF-TOKEN': decodeURIComponent(xsrf)
+            },
+            body: JSON.stringify({
+                food: {
+                    result: res_json.result,
+                    total_kalori: res_json.result[0].calories,
+                    total_protein: res_json.result[0].proteins,
+                    total_karbohidrat: res_json.result[0].carbohydrate
+                }
+            })
+        });
+        
+        window.location.reload();
+    }
+}
+
+async function delete_food(id) {
+    if (confirm(`Apakah anda yakin untuk menghapus makanan ini?`)) {
+        const xsrf = getCookie('XSRF-TOKEN');
+        if (!xsrf) throw new Error('XSRF-TOKEN cookie tidak ditemukan');
+
+        const res = await fetch('/delete_food', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-XSRF-TOKEN': decodeURIComponent(xsrf)
+            },
+            body: new URLSearchParams({ id }).toString()
+        });
+
+        window.location.reload();
+    }
+}
+
+async function edit_food(id) {
+    const name = prompt("Masukan nama makanan");
+    if (!name) return;
+
+    const xsrf = getCookie('XSRF-TOKEN');
+    if (!xsrf) throw new Error('XSRF-TOKEN cookie tidak ditemukan');
+
+    const res = await fetch('/get_food', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-XSRF-TOKEN': decodeURIComponent(xsrf)
+        },
+        body: new URLSearchParams({ name }).toString()
+    });
+
+    const res_json = await res.json();
+
+    if (res_json["status"] === false) return alert("Error: " + res_json["message"]);
+
+    if (confirm(`Makanan terdeteksi: ${res_json.result[0].name_target}\nKalori: ${res_json.result[0].calories}g\nProtein: ${res_json.result[0].proteins}g\nKarbo: ${res_json.result[0].carbohydrate}g\n\nApakah anda ingin mengedit menjadi makanan ini?`)) {
+        const xsrf = getCookie('XSRF-TOKEN');
+        if (!xsrf) throw new Error('XSRF-TOKEN cookie tidak ditemukan');
+
+        res_json.result[0].id = id;
+        delete res_json.result[0].name_alias;
+
+        const res = await fetch('/edit_food', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-XSRF-TOKEN': decodeURIComponent(xsrf)
+            },
+            body: JSON.stringify({
+                id,
+                result: res_json.result
+            })
+        });
+        
+        window.location.reload();
+    }
+}
+
+async function add_food_photo() {
+    if (!current_scan_food) return;
+
+    current_scan_food.result = current_scan_food.result.filter(item => item !== null)
+    const xsrf = getCookie('XSRF-TOKEN');
+    if (!xsrf) throw new Error('XSRF-TOKEN cookie tidak ditemukan');
+
+    const res = await fetch('/add_food_to_db', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-XSRF-TOKEN': decodeURIComponent(xsrf)
+        },
+        body: JSON.stringify({ food: current_scan_food })
+    });
+
+    document.getElementById("upload_image_result").style = "display: none;";
+
+    window.location.reload();
 }
 
 function upload_photo_food() {
@@ -280,6 +398,11 @@ function upload_photo_food() {
       try {
         const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
 
+        current_scan_food = null;
+        document.getElementById("ganti_foto_button").disabled = true;
+        document.getElementById("upload_foto_button").disabled = true;
+        document.getElementById("konfirmasi_button").disabled = true;
+
         const res = await fetch('/api/predict_image', {
           method: 'POST',
           headers: {
@@ -300,11 +423,22 @@ function upload_photo_food() {
 
         json.result.forEach(item => {
             if (!item || item.calories === null || item.proteins === null || item.carbohydrate === null) return;
+            delete item.name_alias;
+            item.id = generateRandomString(32);
             res_food.push(item.name_target)
             total_kalori += Number(item.calories);
             total_protein += Number(item.proteins);
             total_karbohidrat += Number(item.carbohydrate);
         });
+
+        current_scan_food = {
+            result: json.result,
+            total_kalori, total_protein, total_karbohidrat
+        };
+
+        document.getElementById("ganti_foto_button").disabled = false;
+        document.getElementById("upload_foto_button").disabled = false;
+        document.getElementById("konfirmasi_button").disabled = false;
 
         if (!res_food.length || res_food[0] === "unknown") return alert("Gambar ini bukan makanan. Tolong upload gambar yang valid.")
 
@@ -322,12 +456,60 @@ function upload_photo_food() {
         document.getElementById("total_karbohidrat").innerHTML = `Karbohidrat: ${total_karbohidrat.toFixed(2)}g`
         document.getElementById("upload_image_result").style = "";
       } catch (err) {
+        document.getElementById("ganti_foto_button").disabled = false;
+        document.getElementById("upload_foto_button").disabled = false;
+        document.getElementById("konfirmasi_button").disabled = false;
         console.error(err);
         alert('Upload gagal! mohon kirim gambar yang valid.');
       }
     }
   }
-
 }
+(function() {
+    const percent_protein = toPercent(current_protein, limit_protein);
+    const percent_karbo = toPercent(current_karbo, limit_karbo);
+    const percent_kalori = toPercent(current_kalori, limit_kalori);
+    let total_percent = (percent_protein + percent_karbo + percent_kalori) / 3;
+    total_percent = Math.min(Math.round(total_percent), 100);
+
+    document.getElementById("persen_1").innerHTML = `${total_percent}%`
+    document.getElementById("persen_2").innerHTML = `${total_percent}%`
+    document.getElementById("control_bar_1").style.width = `${total_percent}%`;
+
+    if (food_today.length != 0 && food_today[0].length != 0) {
+        document.getElementById("item-makanan").insertAdjacentHTML("beforeend",  `<div class="px-6 py-3 flex items-center justify-between text-white text-sm border-b border-white/40 mb-4">
+            <span class="w-1/3 font-semibold">Nama Makanan</span>
+                <div class="flex gap-10">
+                    <span class="font-semibold">Kalori</span>
+                    <span class="font-semibold">Protein</span>
+                    <span class="font-semibold">Karbo</span>
+                </div>
+                <span class="w-[80px] text-right font-semibold">Aksi</span>
+            </div>
+        `);
+        food_today.forEach(item => {
+            document.getElementById("item-makanan").insertAdjacentHTML("beforeend", `
+                <div class="border border-white/70 rounded-full px-6 py-4 flex justify-between mb-4 text-white">
+                    <p class="w-1/3 capitalize">${item.name_target}</p>
+
+                    <div class="flex gap-10 text-sm">
+                        <span>${item.calories}g</span>
+                        <span>${item.proteins}g</span>
+                        <span>${item.carbohydrate}g</span>
+                    </div>
+
+                    <div class="flex gap-2 w-[80px] justify-end">
+                        <button class="px-2 py-1 rounded-full border border-white/50 hover:bg-white/20 text-xs" onclick="edit_food('${item.id}')">
+                            Edit
+                        </button>
+                        <button class="px-2 py-1 rounded-full border border-red-400 text-red-300 hover:bg-red-400/20 text-xs" onclick="delete_food('${item.id}')">
+                            Hapus
+                        </button>
+                    </div>
+                </div>
+            `);
+        });
+    }
+})()
 </script>
 </x-layouts.appdashboard>

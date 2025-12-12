@@ -6,6 +6,7 @@
 
     <div class="flex justify-center">
         <select
+            id="step_5_input"
             class="bg-[#FF6B5E] border border-white rounded-2xl
                    px-10 py-4 text-lg outline-none"
         >
@@ -16,5 +17,5 @@
             <option>Sangat aktif</option>
         </select>
     </div>
-    <x-assesment.back/assesment/step-4 />
+    <x-assesment.back href="/assesment/step-4" />
 </div>

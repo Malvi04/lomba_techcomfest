@@ -7,6 +7,7 @@
 
     <div class="flex justify-center">
         <select
+            id="step_7_input"
             class="bg-[#FF6B5E] border border-white rounded-2xl
                    px-10 py-4 text-lg outline-none"
         >
@@ -15,5 +16,5 @@
             <option>Di atas jam 10 malam</option>
         </select>
     </div>
-    <x-assesment.back/assesment/step-6 />
+    <x-assesment.back href="/assesment/step-6" />
 </div>

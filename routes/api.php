@@ -184,30 +184,6 @@ Route::post('/forgot_password', function (Request $req) {
     ]);
 });
 
-Route::post('/logout', function (Request $req) {
-    try {
-        // Hapus session user
-        Auth::logout();
-
-        // Hapus seluruh session data lama
-        $req->session()->invalidate();
-        $req->session()->regenerateToken();
-
-        return response()->json([
-            'success'   => true,
-            'redirect'  => '/login',
-            'message'   => 'Logout berhasil.'
-        ], 200);
-
-    } catch (\Exception $e) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Terjadi kesalahan saat logout.'
-        ], 500);
-    }
-});
-
-
 /*Route::post("/predict_image", function (Request $req) {
     try {
         $req->validate([
@@ -328,11 +304,9 @@ Route::post("/predict_image", function (Request $req) {
         ]
     ];
 
-    $token = '4874ed18b6cf4ff98e16922e696f0cc2.BIZtFUEBBUsG9TxM'; 
+    $token = 'a95965a0b645476d9a8fca51870bfb87.JOYEIx1BUoNMF9Dm'; 
     $curl = curl_init("https://api.z.ai/api/paas/v4/chat/completions");
 
-    ## ⚙️ Set Opsi cURL
-    // Set metode POST
     curl_setopt($curl, CURLOPT_POST, 1);
     curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($payload));
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -344,6 +318,7 @@ Route::post("/predict_image", function (Request $req) {
     $response = curl_exec($curl);
     curl_close($curl);
     $data = json_decode($response);
+
     $content_string = $data->choices[0]->message->content;
 
     if (preg_match('/<\|begin_of_box\|>(.*?)<\|end_of_box\|>/s', $content_string, $matches)) {
@@ -365,9 +340,21 @@ Route::post("/predict_image", function (Request $req) {
             ]);
         }
     } else {
-        return response()->json([
-            'result' => [],
-            'success' => true
-        ]);
+        $result_array = json_decode($content_string, true);
+        
+        if (is_array($result_array)) {
+            $result = calculate_name_alias_json($result_array);
+    
+            return response()->json([
+                'success' => true,
+                'nama_makanan' => $result_array,
+                'result' => $result
+            ]);
+        } else {
+            return response()->json([
+                'message' => "ini bukan array",
+                'success' => false,
+            ]);
+        }
     }
 });

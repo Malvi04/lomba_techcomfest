@@ -6,13 +6,12 @@
 
     <div class="flex justify-center items-center gap-4">
         <input
-            type="text"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            class="bg-transparent border-b-2 border-white text-white text-center
-                text-2xl outline-none w-40"
+            id="step_3_input"
+            type="number"
+            class="bg-transparent border-b-2 border-white w-32
+                   text-center text-2xl outline-none"
         >
         <span class="text-2xl font-semibold">Kg</span>
     </div>
-    <x-assesment.back/assesment/step-2 />
+    <x-assesment.back href="/assesment/step-2" />
 </div>
