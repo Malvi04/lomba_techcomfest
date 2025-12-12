@@ -79,7 +79,7 @@
                         makan yang lebih sehat.
                     </p>
 
-                    <a href="#" class="text-white text-sm mt-6 inline-flex items-center gap-1">
+                    <a href="/login" class="text-white text-sm mt-6 inline-flex items-center gap-1">
                         Learn More →
                     </a>
                 </div>
@@ -100,7 +100,7 @@
                         Anda membangun kebiasaan makan yang lebih teratur dan bergizi setiap hari.
                     </p>
 
-                    <a href="#" class="text-white text-sm mt-6 inline-flex items-center gap-1">
+                    <a href="/login" class="text-white text-sm mt-6 inline-flex items-center gap-1">
                         Learn More →
                     </a>
                 </div>
@@ -122,7 +122,7 @@
                         yang lebih bergizi dan seimbang setiap hari.
                     </p>
 
-                    <a href="#" class="text-white text-sm mt-6 inline-flex items-center gap-1">
+                    <a href="/login" class="text-white text-sm mt-6 inline-flex items-center gap-1">
                         Learn More →
                     </a>
                 </div>
@@ -144,7 +144,7 @@
                         mencapai tujuan nutrisi harian.
                     </p>
 
-                    <a href="#" class="text-white text-sm mt-6 inline-flex items-center gap-1">
+                    <a href="/login" class="text-white text-sm mt-6 inline-flex items-center gap-1">
                         Learn More →
                     </a>
                 </div>

@@ -184,6 +184,30 @@ Route::post('/forgot_password', function (Request $req) {
     ]);
 });
 
+Route::post('/logout', function (Request $req) {
+    try {
+        // Hapus session user
+        Auth::logout();
+
+        // Hapus seluruh session data lama
+        $req->session()->invalidate();
+        $req->session()->regenerateToken();
+
+        return response()->json([
+            'success'   => true,
+            'redirect'  => '/login',
+            'message'   => 'Logout berhasil.'
+        ], 200);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Terjadi kesalahan saat logout.'
+        ], 500);
+    }
+});
+
+
 /*Route::post("/predict_image", function (Request $req) {
     try {
         $req->validate([

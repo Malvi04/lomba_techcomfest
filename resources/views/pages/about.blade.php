@@ -63,7 +63,7 @@
     </section>
 
     <!-- 3 step -->
-     <section class="w-full bg-[#F5A7A7] py-20 px-6 text-white font-sans">
+    <section class="w-full bg-[#F5A7A7] py-20 px-6 text-white font-sans">
 
         <!-- Judul -->
         <h2 class="text-center text-3xl font-bold mb-4">
@@ -100,7 +100,7 @@
                     </div>
 
                     <!-- LEARN MORE -->
-                    <a href="#" class="text-sm mt-6 inline-block">Learn More →</a>
+                    <a href="/login" class="text-sm mt-6 inline-block">Learn More →</a>
                 </div>
             </div>
 
@@ -122,7 +122,7 @@
                         </p>
                     </div>
 
-                    <a href="#" class="text-sm mt-6 inline-block">Learn More →</a>
+                    <a href="/login" class="text-sm mt-6 inline-block">Learn More →</a>
                 </div>
             </div>
             
@@ -146,7 +146,7 @@
                         </p>
                     </div>
 
-                    <a href="#" class="text-sm mt-6 inline-block">Learn More →</a>
+                    <a href="/login" class="text-sm mt-6 inline-block">Learn More →</a>
                 </div>
             </div>
 

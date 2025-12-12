@@ -13,8 +13,8 @@
 </head>
 
 <body class="antialiased bg-white">
-    <div class="{{ $noPadding ?? false ? '' : 'pt-20' }}">
-        {{ $slot }}
+    <div class="pt-20">
+        @yield('content')
     </div>
     @include('components.popup.contactUs')
 
