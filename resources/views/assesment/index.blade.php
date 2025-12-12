@@ -1,15 +1,14 @@
-@extends('components.layouts.app')
+<x-layouts.app :noPadding="true">
 
-@section('content')
 <div 
     x-data="{ step: 1 }"
     class="min-h-screen bg-[#FF6B5E] relative overflow-hidden"
 >
 
     <!-- STEP 1 -->
-    <section
-        x-show="step === 1"
-        x-transition
+    <section 
+        x-show="step === 1" 
+        x-transition 
         class="min-h-screen flex items-center justify-center"
     >
         @include('assesment.step-1')
@@ -17,9 +16,9 @@
     </section>
 
     <!-- STEP 2 -->
-    <section
-        x-show="step === 2"
-        x-transition
+    <section 
+        x-show="step === 2" 
+        x-transition 
         class="min-h-screen flex items-center justify-center"
     >
         @include('assesment.step-2')
@@ -28,9 +27,9 @@
     </section>
 
     <!-- STEP 3 -->
-    <section
-        x-show="step === 3"
-        x-transition
+    <section 
+        x-show="step === 3" 
+        x-transition 
         class="min-h-screen flex items-center justify-center"
     >
         @include('assesment.step-3')
@@ -39,9 +38,9 @@
     </section>
 
     <!-- STEP 4 -->
-    <section
-        x-show="step === 4"
-        x-transition
+    <section 
+        x-show="step === 4" 
+        x-transition 
         class="min-h-screen flex items-center justify-center"
     >
         @include('assesment.step-4')
@@ -50,9 +49,9 @@
     </section>
 
     <!-- STEP 5 -->
-    <section
-        x-show="step === 5"
-        x-transition
+    <section 
+        x-show="step === 5" 
+        x-transition 
         class="min-h-screen flex items-center justify-center"
     >
         @include('assesment.step-5')
@@ -61,9 +60,9 @@
     </section>
 
     <!-- STEP 6 -->
-    <section
-        x-show="step === 6"
-        x-transition
+    <section 
+        x-show="step === 6" 
+        x-transition 
         class="min-h-screen flex items-center justify-center"
     >
         @include('assesment.step-6')
@@ -72,24 +71,24 @@
     </section>
 
     <!-- STEP 7 -->
-    <section
-        x-show="step === 7"
-        x-transition
+    <section 
+        x-show="step === 7" 
+        x-transition 
         class="min-h-screen flex items-center justify-center"
     >
         @include('assesment.step-7')
         <x-assesment.back @click="step--" />
 
-        <!-- BUTTON SUBMIT FINAL -->
-        <div
+        <button
             class="absolute bottom-10 right-10
                    text-white text-xl font-semibold
                    border border-white rounded-xl
                    px-8 py-3 hover:bg-white hover:text-[#FF6B5E] transition"
         >
             Selesai
-        </div>
+        </button>
     </section>
 
 </div>
-@endsection
+
+</x-layouts.app>

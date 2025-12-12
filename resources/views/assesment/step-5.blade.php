@@ -16,5 +16,5 @@
             <option>Sangat aktif</option>
         </select>
     </div>
-    <x-assesment.back href="/assesment/step-4" />
+    <x-assesment.back/assesment/step-4 />
 </div>

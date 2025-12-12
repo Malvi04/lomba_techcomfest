@@ -1,15 +1,43 @@
 <x-layouts.app title="GlucoGuide">
     <x-layouts.navbar />
 
+    <section class="relative w-full h-[600px] overflow-hidden">
+
+        <!-- VIDEO BACKGROUND -->
+        <video 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            class="absolute inset-0 w-full h-full object-cover"
+        >
+            <source src="{{ asset('videos/GlucoGuide.mp4') }}" type="video/mp4">
+        </video>
+
+        <!-- OVERLAY GELAP (opsional biar teks kebaca) -->
+        <div class="absolute inset-0 bg-black/60"></div>
+
+        <!-- TEXT CONTENT -->
+        <div class="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-6">
+            <h1 class="text-4xl font-bold mb-4 animate-slideFade">Selamat Datang di GlucoGuide</h1>
+            <p class="text-lg mb-6 animate-slideFade">Pantau kesehatanmu & kelola hidup lebih baik setiap hari</p>
+
+            <a href="/login"
+            class="px-8 py-3 bg-white text-[#FF6B5E] rounded-xl font-semibold hover:bg-gray-100">
+                Mulai Sekarang
+            </a>
+        </div>
+    </section>
+
     <!-- HERO SECTION -->
     <section class=" bg-[#E8A8A2] pt-32 pb-20">
         <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-12 w-full px-6 md:px-12">
             <!-- LEFT -->
             <div class="space-y-8">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight reveal-blur ">
                     Kendalikan gula darah<br>sebelum mengendalikanmu
                 </h1>
-                <p class="text-white/90 text-lg md:text-xl max-w-xl leading-relaxed">
+                <p class="text-white/90 text-lg md:text-xl max-w-xl leading-relaxed reveal-slideRight">
                     Solusi nutrisi seimbang untuk membantu menjaga kadar gula darah tetap stabil setiap hari
                 </p>
                 <button class="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-lg shadow transition">
@@ -29,8 +57,8 @@
                     </div>
                     <img src="{{ Vite::asset('resources/images/leadingpage/p.png') }}"
                         alt="Blood drop"
-                        class="absolute left-1/2 bottom-10 transform -translate-x-1/2
-                        w-52 md:w-[400px] z-10">
+                        class="absolute left-1/2 bottom-10 transform
+                        w-52 md:w-[400px] z-10 animate-floating" x-scrollshow>
                         <!-- untuk buttom untuk mengaatur jarak atas bawah  -->
 
                     <!-- Sugar Cubes (Diposisikan ke Kiri Darah) -->
@@ -50,7 +78,7 @@
         <div class="max-w-7xl mx-auto">
 
             <!-- TITLE -->
-            <h2 class="text-center text-2xl md:text-3xl font-bold text-white mb-10 leading-tight">
+            <h2 class="text-center text-2xl md:text-3xl font-bold text-white mb-10 leading-tight reveal-down">
                 Diabetes Terus Meningkat, <br>
                 Kesadaran Harus Dimulai Sekarang
             </h2>
@@ -60,7 +88,7 @@
 
                 <!-- LEFT TEXT -->
                 <div class="text-white text-left md:pr-8">
-                    <p class="font-medium mb-3">Jumlah penderita diabetes di Indonesia</p>
+                    <p class="font-bold text-4xl mb-2">Jumlah penderita diabetes di Indonesia</p>
                     <p class="font-bold">
                         meningkat hampir 4 <br>
                         kali lipat dalam 24 <br>
@@ -69,7 +97,7 @@
                 </div>
 
                 <!-- SVG GRAPH -->
-                <div class="flex justify-center">
+                <div class="flex justify-center reveal-zoom">
     <svg width="500" height="260" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
 
         <!-- GRID LINES -->
@@ -119,11 +147,10 @@
 
 
                 <!-- RIGHT TEXT -->
-                <div class="text-white text-left md:pl-30 pt-40">
+                <div class="text-white text-left md:pl-30 pt-40 text-1xl">
                     <p>
                         Memantau asupan <br>
-                        dan kebiasaan hari <br>
-                        ini bisa mencegah <br>
+                        dan kebiasaan hari ini bisa mencegah
                         risiko di masa <br>
                         depan.
                     </p>
@@ -154,18 +181,18 @@
             <div class="hidden md:block"></div>
             <!-- RIGHT TEXT -->
             <div class="space-y-8 md:pl-16">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight reveal-down">
                     Mengapa Monitoring<br>Gula Darah Penting?
                 </h2>
 
                 <!-- Item 1 -->
                 <div class="flex items-start gap-5">
                     <div class="bg-white/20 p-3 rounded-full backdrop-blur">
-                        <span class="text-white text-3xl">⚠️</span>
+                        <span class="text-white text-3xl img-blink-pulse ">⚠️</span>
                     </div>
                     <div>
-                        <h3 class="text-xl font-bold text-white">Cegah Komplikasi</h3>
-                        <p class="text-white/90">
+                        <h3 class="text-xl font-bold text-white reveal-slideRight">Cegah Komplikasi</h3>
+                        <p class="text-white/90 reveal-slideRight">
                             Diabetes dapat menyebabkan kerusakan organ jika tidak dikontrol dengan baik.
                         </p>
                     </div>
@@ -174,11 +201,11 @@
                 <!-- Item 2 -->
                 <div class="flex items-start gap-5">
                     <div class="bg-white/20 p-3 rounded-full backdrop-blur">
-                        <span class="text-white text-3xl">❤️</span>
+                        <span class="text-white text-3xl heartbeat">❤️</span>
                     </div>
                     <div>
-                        <h3 class="text-xl font-bold text-white">Hidup lebih berkualitas</h3>
-                        <p class="text-white/90">
+                        <h3 class="text-xl font-bold text-white reveal-slideRight">Hidup lebih berkualitas</h3>
+                        <p class="text-white/90 reveal-slideRight">
                             Kontrol gula darah membantu Anda tetap aktif dan produktif setiap hari.
                         </p>
                     </div>
@@ -197,13 +224,13 @@
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
             <!-- LEFT: Text -->
             <div>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-6">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-6 reveal-slideRight">
                     Jaga
                     Gula Darahmu<br>
                     Lindungi<br>
                     Masa Depanmu
                 </h2>
-                <p class="text-white/90 text-lg md:text-xl max-w-md leading-relaxed">
+                <p class="text-white/90 text-lg md:text-xl max-w-md leading-relaxed reveal-slideRight">
                     Ingin pola makan lebih teratur?<br>
                     Pantau asupan, kenali kebiasaanmu,<br>
                     dan capai hidup yang lebih sehat<br>
@@ -215,7 +242,7 @@
                 <!-- Food Image -->
                 <img src="{{ Vite::asset('resources/images/leadingpage/makanan.png') }}"
                     alt="Healthy Food"
-                    class="relative  object-cover">
+                    class="relative  object-cover reveal-rotate">
             </div>
         </div>
     </section>
@@ -243,8 +270,11 @@
                     <div class="relative w-fit">
 
                     <!-- BADGE TEXT (ALIGN LEFT) -->
-                    <div class="bg-white rounded-full px-6 py-2 shadow text-gray-800 font-medium text-sm pl-6 pr-24 relative z-10 flex items-center">
-                        <span class="text-left">Kebutuhan Karbo Harian</span>
+                    <div class="bg-white rounded-full px-6 py-2 shadow text-gray-800 font-medium text-sm pl-6 pr-24 relative z-10 flex items-center ">
+                        <span class="typewrite-box">
+                        <span class="text-left typewrite" data-text="Kebutuhan Karbo Harian">
+                        </span>
+                        </span>
                     </div>
 
                     <!-- CIRCLE PROGRESS + BACKGROUND CIRCLE -->
@@ -273,11 +303,11 @@
             </div>
             <!-- RIGHT: Text -->
             <div class="z-10">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-4">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-4 reveal-slideRight">
                     Kenali makananmu<br>
                     dengan lebih mudah
                 </h2>
-                <p class="text-white/90 text-lg md:text-xl max-w-lg leading-relaxed">
+                <p class="text-white/90 text-lg md:text-xl max-w-lg leading-relaxed reveal-slideRight">
                     Lihat perkiraan kalori, gula, dan nutrisi penting,<br>
                     lalu bandingkan porsi untuk membantu menjaga pola makan<br>
                     yang lebih aman bagi gula darahmu.

@@ -6,11 +6,13 @@
 
     <div class="flex justify-center items-center gap-4">
         <input
-            type="number"
-            class="bg-transparent border-b-2 border-white w-32
-                   text-center text-2xl outline-none"
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            class="bg-transparent border-b-2 border-white text-white text-center
+                text-2xl outline-none w-40"
         >
         <span class="text-2xl font-semibold">Cm</span>
     </div>
-    <x-assesment.back href="/assesment/step-3" />
+    <x-assesment.back/assesment/step-3 />
 </div>

@@ -16,3 +16,207 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* ============================= */
+/*        ANIMATIONS START       */
+/* ============================= */
+
+/* Fade-in + slide-up */
+@keyframes slideFade {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slideFade {
+    animation: slideFade 1.2s ease-out forwards;
+}
+
+/* Floating effect */
+@keyframes floating {
+    0% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -12px); }
+    100% { transform: translate(-50%, 0); }
+}
+
+.animate-floating {
+    animation: floating 2s ease-in-out infinite;
+}
+
+/* Slide from left */
+@keyframes slideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-slideRight {
+    animation: slideRight 1.4s ease-out forwards;
+}
+
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+
+/* STATE setelah terlihat */
+.scroll-animate.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* non blur reveal */
+.reveal-slideRight{
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: 
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out;
+}
+
+.reveal-slideRight.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* blur reveal */
+.reveal-blur {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(5px);
+    transition: 
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out,
+        filter 0.8s ease-out;
+}
+
+/* Saat elemen muncul */
+.reveal-blur.show {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* ================================
+   SLIDE-DOWN
+=================================== */
+
+.reveal-down {
+    opacity: 0;
+    transform: translateY(-40px);
+    transition: 
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out;
+}
+
+.reveal-down.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* ================================
+   SLIDE-LEFT
+=================================== */
+.reveal-slideLeft {
+    opacity: 0;
+    transform: translateX(40px);
+        transition: 
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out;
+}
+.reveal-slideLeft.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ================================
+   ZOOM-IN
+=================================== */
+.reveal-zoom {
+    opacity: 0;
+    transform: scale(0.85);
+        transition: 
+        opacity 0.8s ease-out,
+        transform 1.8s ease-out;
+}
+.reveal-zoom.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ================================
+   ROTATE + FADE
+=================================== */
+.reveal-rotate {
+    opacity: 0;
+    transform: rotate(-6deg) scale(0.95);
+        transition: 
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out;
+}
+.reveal-rotate.show {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+
+
+
+/* ============================= */
+/*        ANIMATIONS END         */
+/* ============================= */
+.typewrite-box {
+    display: inline-block;
+    min-width: 180px; /* FIXED WIDTH – ubah sesuai panjang teks */
+}
+.typewrite {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid black;
+    animation: caretBlink 0.7s infinite;
+}
+
+@keyframes caretBlink {
+    0% { border-color: transparent; }
+    50% { border-color: black; }
+    100% { border-color: transparent; }
+}
+
+@keyframes blink-pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.img-blink-pulse {
+    animation: blink-pulse 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0%   { transform: scale(1); }
+    10%  { transform: scale(1.25); }
+    20%  { transform: scale(1.1); }
+    30%  { transform: scale(1.25); }
+    40%  { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+.heartbeat {
+    animation: heartbeat 2.3s infinite ease-in-out;
+    transform-origin: center;
+    display: inline-block;
+}
+

@@ -6,9 +6,11 @@
 
     <div class="flex justify-center">
         <input
-            type="number"
-            class="bg-transparent border-b-2 border-white w-32
-                   text-center text-2xl outline-none"
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            class="bg-transparent border-b-2 border-white text-white text-center
+                text-2xl outline-none w-40"
         />
     </div>
 

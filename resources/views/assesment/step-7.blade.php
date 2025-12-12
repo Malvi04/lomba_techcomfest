@@ -15,5 +15,5 @@
             <option>Di atas jam 10 malam</option>
         </select>
     </div>
-    <x-assesment.back href="/assesment/step-6" />
+    <x-assesment.back/assesment/step-6 />
 </div>
