@@ -12,7 +12,7 @@
                     <path d="M14 14s-1-4-6-4-6 4-6 4 1 2 6 2 6-2 6-2"/>
                 </svg>
             </div>
-            <p class="text-white font-medium">User_name</p>
+            <p class="text-white font-medium">{{ $user->username }}</p>
         </div>
         <a href="/dashboard" class="bg-red-600 text-white px-5 py-2 rounded-full font-semibold">
             Dashboard
