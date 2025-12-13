@@ -572,6 +572,10 @@ function upload_photo_food() {
             `);
         });
     }
+
+    
 })()
+
+    
 </script>
 </x-layouts.appdashboard>

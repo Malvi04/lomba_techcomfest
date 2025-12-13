@@ -34,6 +34,7 @@ Route::get('/dashboard', function () {
     return view('pages.dashboard', ['user' => Auth::user()]);
 })->middleware('auth')->name('dashboard');
 
+
 Route::get('/hasil', function () {
     if (!Auth::check()) return redirect()->route('login');
     return view('pages.result', ['user' => Auth::user()]);
