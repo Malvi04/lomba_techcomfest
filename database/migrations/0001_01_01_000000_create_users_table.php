@@ -49,7 +49,20 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+        
+        Schema::create('sleep_records', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->date('date');
+            $table->time('sleep_time')->nullable();   // jam tidur user
+            $table->time('wake_time')->nullable();    // dicatat saat klik "Bangun"
+            $table->integer('sleep_minutes')->nullable(); // hasil durasi
+            $table->integer('quality')->nullable(); // persentase kualitas
+            $table->timestamps();
+        });
     }
+
+    
 
     /**
      * Reverse the migrations.
@@ -59,5 +72,6 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('sleep_records');
     }
 };

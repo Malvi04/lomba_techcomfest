@@ -1,6 +1,5 @@
-@extends('components.layouts.appassesment')
+<x-layouts.app :noPadding="true">
 
-@section('content')
 <div 
     x-data="{ step: 1 }"
     class="min-h-screen bg-[#FF6B5E] relative overflow-hidden"
@@ -144,4 +143,4 @@
             }
         }
     </script>
-@endsection
+</x-layouts.app>

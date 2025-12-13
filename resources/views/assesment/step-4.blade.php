@@ -9,7 +9,7 @@
             id="step_4_input"
             type="number"
             class="bg-transparent border-b-2 border-white w-32
-                   text-center text-2xl outline-none"
+                   text-center text-2xl outline-none no-spinner"
         >
         <span class="text-2xl font-semibold">Cm</span>
     </div>

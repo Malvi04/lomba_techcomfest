@@ -12,7 +12,16 @@ x-on:open-photo.window="photoOpen = true">
                 <img src="{{ asset('images/icons/profile.png') }}" class="w-10 h-10">
                 <span class="font-semibold">Halo, {{ $user->username }}!</span>
             </div>
-            <img src="{{ asset('images/icons/setting.png') }}" class="w-8 h-8">
+            <form method="GET" action=/logout>
+            @csrf
+            <button
+                type="submit"
+                class="px-6 py-2 bg-white/20 text-white font-semibold rounded-xl
+                    hover:bg-white/30 transition"
+            >
+                Logout
+            </button>
+        </form>
         </div>
 
         <!-- PROGRESS CARD -->
@@ -42,30 +51,72 @@ x-on:open-photo.window="photoOpen = true">
                 <p id="persen_1" class="text-center mt-1 text-sm">0%</p>
             </div>
 
-            <div class="w-24 h-24 rounded-full border-[10px] border-red-900/40 flex items-center justify-center">
-                <span id="persen_2" class="text-xl font-bold">0%</span>
+            <div class="relative w-24 h-24">
+                <svg class="w-24 h-24 transform -rotate-90">
+                    <!-- background circle -->
+                    <circle
+                        cx="48" cy="48" r="36"
+                        stroke="rgba(0,0,0,0.25)"
+                        stroke-width="8"
+                        fill="none"
+                    />
+
+                    <!-- progress circle -->
+                    <circle
+                        id="progress_circle"
+                        cx="48" cy="48" r="36"
+                        stroke="#fff"
+                        stroke-width="8"
+                        fill="none"
+                        stroke-dasharray="226"
+                        stroke-dashoffset="226"
+                        stroke-linecap="round"
+                        class="transition-all duration-700 ease-out"
+                    />
+                </svg>
+
+                <!-- text di tengah -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span id="persen_2" class="text-xl font-bold">0%</span>
+                </div>
             </div>
+
 
         </div>
 
         <!-- NUTRITION -->
-        <p class="mb-4 text-lg font-semibold">Nutrisi yang harus kamu penuhi hari ini :</p>
-        <div class="grid grid-cols-3 gap-4 mb-8 justify-center">
-            <div class="bg-[#FF6A5E] rounded-2xl p-5 flex justify-between items-center justify-center">
+        <div class="grid grid-cols-3 gap-6 mb-8">
+
+            <!-- SLEEP -->
+            <a href="/sleep-tracker"
+            @click.prevent="
+                leaving = true;
+                setTimeout(() => window.location.href = $el.href, 300)
+            "
+            class="bg-[#FF6A5E] rounded-2xl p-5 h-24
+                    flex items-center justify-center transition
+                    h-24 transition hover:scale-[1.02]">
                 <img src="{{ asset('images/icons/tidur.png') }}" class="w-10">
-                <span>→</span>
-            </div>
+            </a>
 
-            <div class="bg-[#FF6A5E] rounded-2xl p-5 flex justify-between items-center justify-center">
+            <!-- ACTIVITY -->
+            <a href="#"
+            class="bg-[#FF6A5E] rounded-2xl p-5
+                    flex items-center justify-center
+                    h-24 transition hover:scale-[1.02]">
                 <img src="{{ asset('images/icons/run.png') }}" class="w-10">
-                <span>→</span>
-            </div>
+            </a>
 
-            <div class="bg-[#FF6A5E] rounded-2xl p-5 flex justify-between items-center justify-center">
+            <!-- TIPS -->
+            <a href="#"
+            class="bg-[#FF6A5E] rounded-2xl p-5
+                    flex items-center justify-center
+                    h-24 transition hover:scale-[1.02]">
                 <img src="{{ asset('images/icons/ide.png') }}" class="w-10">
-                <span>→</span>
-            </div>
+            </a>
+
         </div>
+
 
         <!-- FOOD LOG -->
         <div class="mb-6">
@@ -143,11 +194,14 @@ x-on:open-photo.window="photoOpen = true">
             class="mt-4 flex-1 border-2 border-white rounded-[20px]
                 flex items-center justify-center bg-white/20"
         >
-            <div class="overflow-hidden rounded-xl"><img
-                alt="Preview"
-                class="w-full h-full object-contain block"
-                id="image_food_preview"
-            ></div>
+            <!-- FIXED PREVIEW BOX -->
+            <div class="w-full h-full max-h-[360px] max-w-full overflow-hidden rounded-xl flex items-center justify-center">
+                <img
+                    id="image_food_preview"
+                    alt="Preview"
+                    class="max-w-full max-h-full object-contain"
+                >
+            </div>
         </div>
 
         <div class="mt-2 text-black space-y-2">
@@ -475,6 +529,14 @@ function upload_photo_food() {
     document.getElementById("persen_1").innerHTML = `${total_percent}%`
     document.getElementById("persen_2").innerHTML = `${total_percent}%`
     document.getElementById("control_bar_1").style.width = `${total_percent}%`;
+
+    const circle = document.getElementById("progress_circle");
+    const radius = 36;
+    const circumference = 2 * Math.PI * radius;
+
+    circle.style.strokeDasharray = circumference;
+    circle.style.strokeDashoffset =
+        circumference - (total_percent / 100) * circumference;
 
     if (food_today.length != 0 && food_today[0].length != 0) {
         document.getElementById("item-makanan").insertAdjacentHTML("beforeend",  `<div class="px-6 py-3 flex items-center justify-between text-white text-sm border-b border-white/40 mb-4">

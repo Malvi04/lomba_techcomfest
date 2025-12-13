@@ -1,7 +1,7 @@
 <x-layouts.app :noPadding="true">
 
 <div class="min-h-screen bg-gradient-to-b from-[#DD8680] to-[#C97971] text-white px-6 py-10"
-     x-data="{ hour: 22, minute: 0 }">
+     x-data="sleepTracker()">
 
     <!-- USER -->
     <div class="flex items-center gap-2 mb-4">
@@ -81,8 +81,17 @@
 
         <button @click="minute = (minute - 1 + 60) % 60" class="text-3xl">▼</button>
     </div>
+    
+    
+</div>
 
-
+<!-- SAVE BUTTON -->
+    <div class="flex justify-center mt-6">
+        <button 
+            @click="saveSleepTime()"
+            class="px-8 py-3 bg-white text-[#C97971] font-bold rounded-xl shadow hover:bg-gray-200 transition">
+            Simpan Waktu Tidur
+        </button>
     </div>
 
     <!-- HISTORY -->

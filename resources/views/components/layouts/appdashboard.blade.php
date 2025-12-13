@@ -12,7 +12,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased bg-white">
+<body x-data="{ leaving: false }"
+      :class="{ 'opacity-0': leaving }"
+      class="transition-opacity duration-300">
     <div>
         {{ $slot }}
     </div>
