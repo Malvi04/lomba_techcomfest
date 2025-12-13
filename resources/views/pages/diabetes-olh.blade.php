@@ -118,8 +118,8 @@
     <!-- WARNING -->
     <div class="mt-14 flex justify-center items-center gap-2 text-[#8B2E2E]">
         <img src="{{ Vite::asset('resources/images/olahraga/Warning.png') }}" alt="" class="w-6 h-6">
-        <p class="font-semibold">
-           <span class="text-[#FF2D2D]">Peringatan</span> : Konsultasikan dengan dokter Anda sebelum memulai program olahraga
+        <p class="font-semibold text-white">
+           <span class="text-[#FF2D2D]">Peringatan</span> : Hanya program olahraga, selanjutnya konsultasikan dengan dokter anda
         </p>
     </div>
 
