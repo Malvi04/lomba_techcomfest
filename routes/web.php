@@ -21,7 +21,6 @@ Route::get('/', function () {
     return Auth::check() ? redirect("/dashboard") : view('pages.homepage');
 });
 
-<<<<<<< HEAD
 Route::get('/sleep-tracker', function () {
     return view('pages.sleep-tracking');
 })->name('sleep.tracker');
@@ -42,9 +41,6 @@ Route::get('/hidupsehat', function () {
     return view('pages.hidup');
 })->name('hidup');
 
-
-=======
->>>>>>> f54d88e9fa985f9253471e3d2fe43db031ac9311
 Route::get('/about', function() {
     return Auth::check() ? redirect("/dashboard") : view('pages.about');
 })->name('about');
@@ -351,3 +347,4 @@ Route::get('/logout', function (Request $req) {
     $req->session()->regenerateToken();
     return redirect()->route('login');
 })->middleware('auth');
+
