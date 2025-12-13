@@ -42,7 +42,7 @@
                 darah
             </p>
 
-            <a href="dietSehat"
+            <a href="diabetes"
                class="mt-6 bg-[#FF3B30] text-white font-semibold px-6 py-3 rounded-full flex items-center gap-2 shadow">
                <img src="{{ Vite::asset('resources/images/icons/healty.png') }}" class="w-5">
                Diabetes
