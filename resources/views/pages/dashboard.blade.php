@@ -85,7 +85,7 @@ x-on:open-photo.window="photoOpen = true">
         </div>
 
         <!-- NUTRITION -->
-        <div class="grid grid-cols-3 gap-6 mb-8">
+        <div class="grid grid-cols-2 gap-6 mb-8">
 
             <!-- SLEEP -->
             <a href="/sleep-tracker"
@@ -108,12 +108,7 @@ x-on:open-photo.window="photoOpen = true">
             </a>
 
             <!-- TIPS -->
-            <a href="#"
-            class="bg-[#FF6A5E] rounded-2xl p-5
-                    flex items-center justify-center
-                    h-24 transition hover:scale-[1.02]">
-                <img src="{{ asset('images/icons/ide.png') }}" class="w-10">
-            </a>
+
 
         </div>
 
@@ -158,10 +153,6 @@ x-on:open-photo.window="photoOpen = true">
         </div>
 
 
-        <div class="flex justify-end mt-6">
-            <span class="flex items-center gap-2 cursor-pointer">
-                Yuk lihat tips lainnya →
-            </span>
         </div>
 
     </div>

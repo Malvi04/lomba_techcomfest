@@ -18,7 +18,7 @@ class DashboardController extends Controller
 
         $today = Carbon::today()->toDateString();
 
-        // ✅ reset hanya 1x per hari
+        // reset hanya 1x per hari
         if ($user->last_reset_date !== $today) {
             $user->update([
                 'current_protein' => 0,

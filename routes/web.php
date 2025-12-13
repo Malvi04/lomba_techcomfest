@@ -13,6 +13,7 @@ Route::get('/services', function () {
     return Auth::check() ? redirect("/dashboard") : view('pages.services');
 })->name('services');
 
+
 Route::get('/comingsoon', function () {
     return view('pages.comingsoon');
 })->name('comingsoon');
@@ -21,30 +22,6 @@ Route::get('/', function () {
     return Auth::check() ? redirect("/dashboard") : view('pages.homepage');
 });
 
-<<<<<<< HEAD
-Route::get('/sleep-tracker', function () {
-    return view('pages.sleep-tracking');
-})->name('sleep.tracker');
-
-Route::get('/olahraga', function () {
-    return view('pages.olahraga');
-})->name('olahraga');
-
-Route::get('/diabetes', function () {
-    return view('pages.diabetes-olh');
-})->name('diabetes');
-
-Route::get('/dietSehat', function () {
-    return view('pages.diet-sehat');
-})->name('diet sehat');
-
-Route::get('/hidupsehat', function () {
-    return view('pages.hidup');
-})->name('hidup');
-
-
-=======
->>>>>>> f54d88e9fa985f9253471e3d2fe43db031ac9311
 Route::get('/about', function() {
     return Auth::check() ? redirect("/dashboard") : view('pages.about');
 })->name('about');
@@ -79,6 +56,10 @@ Route::get('/forgot_password', function () {
 Route::get('/sleep-tracker', function () {
     return view('pages.sleep-tracking');
 })->name('sleep.tracker');
+
+Route::get('/olahraga', function () {
+    return view('pages.olahraga');
+})->name('olahraga');
 
 Route::get('/assesment', function () {
     if (!Auth::check()) return redirect()->route('login');
