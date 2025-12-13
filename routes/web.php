@@ -30,6 +30,22 @@ Route::get('/sleep-tracker', function () {
     return view('pages.sleep-tracking');
 })->name('sleep.tracker');
 
+Route::get('/olahraga', function () {
+    return view('pages.olahraga');
+})->name('olahraga');
+
+Route::get('/diabetes', function () {
+    return view('pages.diabetes-olh');
+})->name('diabetes');
+
+Route::get('/dietSehat', function () {
+    return view('pages.diet-sehat');
+})->name('diet sehat');
+
+Route::get('/hidupsehat', function () {
+    return view('pages.hidup');
+})->name('hidup');
+
 
 Route::get('/about', function() {
     return Auth::check() ? redirect("/dashboard") : view('pages.about');
