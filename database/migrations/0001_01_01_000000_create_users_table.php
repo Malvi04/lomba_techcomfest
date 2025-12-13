@@ -33,6 +33,8 @@ return new class extends Migration
             $table->json('food_today')->default('[]');
             $table->rememberToken();
             $table->timestamps();
+            $table->date('last_reset_date')->nullable();
+            
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -60,6 +62,8 @@ return new class extends Migration
             $table->integer('quality')->nullable(); // persentase kualitas
             $table->timestamps();
         });
+
+        
     }
 
     
