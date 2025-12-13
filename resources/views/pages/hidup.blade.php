@@ -5,11 +5,16 @@
 
     <!-- HEADER -->
     <div class="flex items-center justify-between mb-10">
-        <div class="flex items-center gap-3 text-white">
-            <div class="w-9 h-9 rounded-full bg-red-600 flex items-center justify-center">👤</div>
-            <span>User_name</span>
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                    <path d="M14 14s-1-4-6-4-6 4-6 4 1 2 6 2 6-2 6-2"/>
+                </svg>
+            </div>
+            <p class="text-white font-medium">User_name</p>
         </div>
-        <a href="#" class="bg-red-600 text-white px-5 py-2 rounded-full font-semibold">
+        <a href="/dashboard" class="bg-red-600 text-white px-5 py-2 rounded-full font-semibold">
             Dashboard
         </a>
     </div>
@@ -136,8 +141,8 @@
     <!-- WARNING -->
     <div class="flex items-center justify-center gap-3 mt-14 text-red-700 font-semibold text-center px-4">
         <span>⚠️</span>
-        <p>
-            Peringatan : Konsultasikan dengan dokter Anda sebelum memulai program olahraga
+        <p class="font-semibold text-white">
+           <span class="text-[#FF2D2D]">Peringatan</span> : Hanya program olahraga, selanjutnya konsultasikan dengan dokter anda
         </p>
     </div>
 

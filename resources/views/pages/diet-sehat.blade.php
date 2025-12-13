@@ -81,36 +81,45 @@
         </div>
 
         <!-- CARD 4 -->
-        <div data-category="low" class="activity-card bg-[#F2EFEE] w-full rounded-3xl shadow-md overflow-hidden">
-            <div class="p-8 h-52 flex items-center justify-center">
-                <img src="{{ Vite::asset('resources/images/olahraga/diet/skiping.png') }}" class="w-40">
+        <div class="activity-card bg-[#F6F1EE] rounded-[32px] overflow-hidden flex flex-col h-full shadow"
+             data-category="low">
+            <div class="flex items-center justify-center flex-1 py-12">
+                <img src="{{ Vite::asset('resources/images/olahraga/diet/skiping.png') }}" class="w-32 md:w-36">
             </div>
-            <div class="bg-[#EF6F5E] text-white p-5">
-                <p class="font-bold text-lg">Skipping</p>
-                <p class="text-sm mt-1">Praktis dan membakar banyak kalori dalam waktu singkat</p>
-            </div>
-        </div>
-
-        <!-- CARD 5 -->
-        <div data-category="kekuatan" class="activity-card bg-[#F2EFEE] w-full rounded-3xl shadow-md overflow-hidden">
-            <div class="p-8 h-52 flex items-center justify-center">
-                <img src="{{ Vite::asset('resources/images/olahraga/diabetes/image4.png') }}" class="w-40">
-            </div>
-            <div class="bg-[#EF6F5E] text-white p-5 mt-auto">
-                <p class="font-bold text-lg">Latihan Kekuatan</p>
-                <p class="text-sm mt-1">Latihan kekuatan selama 20 menit
+            <div class="bg-[#F36B5B] text-white p-6">
+                <h3 class="text-xl font-semibold mb-2">Skipping</h3>
+                <p class="text-sm">
+                    Praktis dan membakar banyak kalori dalam waktu singkat
                 </p>
             </div>
         </div>
 
-        <!-- CARD 6 -->
-        <div data-category="kekuatan" class="activity-card bg-[#F2EFEE] w-full rounded-3xl shadow-md overflow-hidden">
-            <div class="p-8 h-52 flex items-center justify-center">
-                <img src="{{ Vite::asset('resources/images/olahraga/diet/pilates.png') }}" class="w-40">
+        <!-- Card 5 -->
+        <div class="activity-card bg-[#F6F1EE] rounded-[32px] overflow-hidden flex flex-col h-full shadow"
+             data-category="kekuatan">
+            <div class="flex items-center justify-center flex-1 py-12">
+                <img src="{{ Vite::asset('resources/images/olahraga/diabetes/image4.png') }}" class="w-32 md:w-36">
             </div>
-            <div class="bg-[#EF6F5E] text-white p-5">
-                <p class="font-bold text-lg">Pilates</p>
-                <p class="text-sm mt-1">Melatih otot inti (perut, panggul, punggung bawah) dengan intensitas rendah</p>
+            <div class="bg-[#F36B5B] text-white p-6">
+                <h3 class="text-xl font-semibold mb-2">Latihan Kekuatan</h3>
+                <p class="text-sm">
+                    Latihan kekuatan selama 20 menit
+                </p>
+            </div>
+        </div>
+
+
+        <!-- CARD 6 -->
+        <div class="activity-card bg-[#F6F1EE] rounded-[32px] overflow-hidden flex flex-col h-full shadow"
+             data-category="low">
+            <div class="flex items-center justify-center flex-1 py-12">
+                <img src="{{ Vite::asset('resources/images/olahraga/diet/pilates.png') }}" class="w-32 md:w-36">
+            </div>
+            <div class="bg-[#F36B5B] text-white p-6">
+                <h3 class="text-xl font-semibold mb-2">Pilates</h3>
+                <p class="text-sm">
+                    Melatih otot inti (perut, panggul, punggung bawah) dengan intensitas rendah
+                </p>
             </div>
         </div>
 
@@ -119,8 +128,8 @@
     <!-- WARNING -->
     <div class="mt-14 flex justify-center items-center gap-2 text-[#8B2E2E]">
         <img src="{{ Vite::asset('resources/images/olahraga/Warning.png') }}" alt="" class="w-6 h-6">
-        <p class="font-semibold">
-           <span class="text-[#FF2D2D]">Peringatan</span> : Konsultasikan dengan dokter Anda sebelum memulai program olahraga
+        <p class="font-semibold text-white">
+           <span class="text-[#FF2D2D]">Peringatan</span> : Hanya program olahraga, selanjutnya konsultasikan dengan dokter anda
         </p>
     </div>
 
