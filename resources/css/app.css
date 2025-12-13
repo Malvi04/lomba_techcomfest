@@ -227,8 +227,10 @@
     margin: 0;
 }
 
+circle { 
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
 .no-spinner {
     -moz-appearance: textfield;
 }
-
-

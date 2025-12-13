@@ -5,7 +5,7 @@
     </p>
 
     <div class="flex justify-center">
-        <select class="bg-[#FF6B5E] border border-white rounded-xl
+        <select id="step_2_input" class="bg-[#FF6B5E] border border-white rounded-xl
                        px-6 py-3 text-lg outline-none">
             <option>Pilih</option>
             <option>Laki-laki</option>
@@ -13,5 +13,5 @@
         </select>
     </div>
     
-    <x-assesment.back/assesment/step-1 />
+    <x-assesment.back href="/assesment/step-1" />
 </div>

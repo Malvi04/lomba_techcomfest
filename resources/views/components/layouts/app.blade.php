@@ -12,7 +12,17 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased bg-white">
+<body
+    x-data="{ show: false, leaving: false }"
+    x-init="show = true"
+    :class="{
+        'opacity-0': !show || leaving,
+        'opacity-100': show && !leaving
+    }"
+    class="antialiased bg-white transition-opacity duration-300"
+    x-cloak
+>
+
     <div class="{{ $noPadding ?? false ? '' : 'pt-20' }}">
         {{ $slot }}
     </div>
@@ -68,6 +78,26 @@ function typeWriterLoop(element, speed = 80, delay = 2000) {
     });
     </script>
 
+    <script>
+        function sleepTracker() {
+            return {
+                hour: 22,
+                minute: 0,
+                history: [],
+
+                saveSleepTime() {
+                    const time = `${String(this.hour).padStart(2,'0')}:${String(this.minute).padStart(2,'0')}`;
+
+                    this.history.push({
+                        day: "Senin",
+                        sleep: time
+                    });
+
+                    console.log("Saved:", time);
+                }
+            }
+        }
+    </script>
 
 </body>
 </html>

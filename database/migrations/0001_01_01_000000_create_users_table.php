@@ -17,18 +17,20 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->decimal('limit_protein', 8, 2)->nullable()->default(100);
-            $table->decimal('limit_karbo', 8, 2)->nullable()->default(100);
+            $table->decimal('umur')->nullable()->default(0);
+            $table->decimal('kelamin')->nullable()->default(0);
+            $table->decimal('berat_badan')->nullable()->default(0);
+            $table->decimal('tinggi_badan')->nullable()->default(0);
+            $table->decimal('seberapa_aktif')->nullable()->default(0);
+            $table->decimal('sakit_diabetes')->nullable()->default(0);
+            $table->decimal('waktu_tidur')->nullable()->default(0);
+            $table->decimal('limit_protein', 8, 2)->nullable()->default(1000);
+            $table->decimal('limit_karbo', 8, 2)->nullable()->default(1000);
             $table->decimal('limit_kalori', 8, 2)->nullable()->default(100);
             $table->decimal('current_protein', 8, 2)->nullable()->default(0);
             $table->decimal('current_karbo', 8, 2)->nullable()->default(0);
             $table->decimal('current_kalori', 8, 2)->nullable()->default(0);
-            // $table->json('food_today')->default('[]');
-
-            // gua ganti ini dulu pin sementara biar ga error
-            $table->json('food_today')->nullable();
-            // end
-
+            $table->json('food_today')->default('[]');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -47,7 +49,20 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+        
+        Schema::create('sleep_records', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->date('date');
+            $table->time('sleep_time')->nullable();   // jam tidur user
+            $table->time('wake_time')->nullable();    // dicatat saat klik "Bangun"
+            $table->integer('sleep_minutes')->nullable(); // hasil durasi
+            $table->integer('quality')->nullable(); // persentase kualitas
+            $table->timestamps();
+        });
     }
+
+    
 
     /**
      * Reverse the migrations.
@@ -57,5 +72,6 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('sleep_records');
     }
 };
