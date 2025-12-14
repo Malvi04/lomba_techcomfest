@@ -1,7 +1,7 @@
 <!-- resources/views/diet-sehat.blade.php -->
 <x-layouts.appOlh title="Olahraga">
 
-<div class="w-full min-h-screen bg-[#E8A3A0] px-6 md:px-10 py-8 font-[Poppins]">
+<div class="w-full min-h-screen bg-[#E8A3A0] px-6 md:px-10 py-8">
 
     <!-- HEADER -->
     <div class="flex items-center justify-between mb-10">
