@@ -7,7 +7,7 @@
             <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow">
                 <img src="{{ Vite::asset('resources/images/dashboard/profile.png') }}" class="w-6" alt="">
             </div>
-            <p class="text-white font-medium">User_name</p>
+            <p class="text-white font-medium">{{ $user->username }}</p>
         </div>
 
         <a href="/dashboard"
@@ -25,7 +25,7 @@
             Sesuaikan aktivitas fisik dengan kondisi kesehatanmu
         </p>
         <p class="text-white mt-2 font-medium">
-            Halo, User_name! Ayo pilih olahraga terbaikmu hari ini
+            Halo, <span>{{ $user->username }}</span> Ayo pilih olahraga terbaikmu hari ini
         </p>
     </div>
 
@@ -42,7 +42,7 @@
                 darah
             </p>
 
-            <a href="dietSehat"
+            <a href="diabetes"
                class="mt-6 bg-[#FF3B30] text-white font-semibold px-6 py-3 rounded-full flex items-center gap-2 shadow">
                <img src="{{ Vite::asset('resources/images/icons/healty.png') }}" class="w-5">
                Diabetes

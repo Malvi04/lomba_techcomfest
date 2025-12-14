@@ -39,6 +39,15 @@ class User extends Authenticatable
     ];
 
     /**
+     * Model attribute defaults.
+     *
+     * @var array<string, mixed>
+     */
+    protected $attributes = [
+        'food_today' => '[]',
+    ];
+
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var list<string>

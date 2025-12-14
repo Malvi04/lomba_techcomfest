@@ -8,7 +8,7 @@
         <div class="w-6 h-6 bg-white/30 rounded-full flex items-center justify-center">
             <img src="{{ Vite::asset('resources/images/dashboard/profile.png') }}" class="w-4">
         </div>
-        <span class="text-sm">User_name</span>
+        <span class="text-sm">{{ $user->username }}</span>
     </div>
 
     <!-- TITLE -->

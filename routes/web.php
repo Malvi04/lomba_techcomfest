@@ -22,25 +22,54 @@ Route::get('/', function () {
     return Auth::check() ? redirect("/dashboard") : view('pages.homepage');
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2b042d9f2165f772454d86eb0162a0353982efef
 Route::get('/sleep-tracker', function () {
-    return view('pages.sleep-tracking');
-})->name('sleep.tracker');
+    if (!Auth::check()) return redirect()->route('login');
+    $user_data = Auth::user();
 
-Route::get('/olahraga', function () {
-    return view('pages.olahraga');
-})->name('olahraga');
+    if (!$user_data->umur) return redirect('/assesment');
 
-Route::get('/diabetes', function () {
-    return view('pages.diabetes-olh');
-})->name('diabetes');
-
-Route::get('/dietSehat', function () {
-    return view('pages.diet-sehat');
-})->name('diet sehat');
+    return view('pages.sleep-tracking', ['user' => Auth::user()]);
+})->middleware('auth')->name('sleep.tracker');
 
 Route::get('/hidupsehat', function () {
-    return view('pages.hidup');
-})->name('hidup');
+    if (!Auth::check()) return redirect()->route('login');
+    $user_data = Auth::user();
+
+    if (!$user_data->umur) return redirect('/assesment');
+
+    return view('pages.hidup', ['user' => Auth::user()]);
+})->middleware('auth')->name('hidupsehat');
+
+Route::get('/dietSehat', function () {
+    if (!Auth::check()) return redirect()->route('login');
+    $user_data = Auth::user();
+
+    if (!$user_data->umur) return redirect('/assesment');
+
+    return view('pages.diet-sehat', ['user' => Auth::user()]);
+})->middleware('auth')->name('dietsehat');
+
+Route::get('/diabetes', function () {
+    if (!Auth::check()) return redirect()->route('login');
+    $user_data = Auth::user();
+
+    if (!$user_data->umur) return redirect('/assesment');
+
+    return view('pages.diabetes-olh', ['user' => Auth::user()]);
+})->middleware('auth')->name('diabetes');
+
+Route::get('/olahraga', function () {
+    if (!Auth::check()) return redirect()->route('login');
+    $user_data = Auth::user();
+
+    if (!$user_data->umur) return redirect('/assesment');
+
+    return view('pages.olahraga', ['user' => Auth::user()]);
+})->middleware('auth')->name('olahraga');
 
 
 Route::get('/about', function() {
@@ -73,14 +102,6 @@ Route::get('/register', function () {
 Route::get('/forgot_password', function () {
     return Auth::check() ? redirect('/dashboard') : view('auth.forgot_password');
 })->name('forgot_password');
-
-Route::get('/sleep-tracker', function () {
-    return view('pages.sleep-tracking');
-})->name('sleep.tracker');
-
-Route::get('/olahraga', function () {
-    return view('pages.olahraga');
-})->name('olahraga');
 
 Route::get('/assesment', function () {
     if (!Auth::check()) return redirect()->route('login');

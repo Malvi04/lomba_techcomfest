@@ -100,7 +100,7 @@ x-on:open-photo.window="photoOpen = true">
             </a>
 
             <!-- ACTIVITY -->
-            <a href="#"
+            <a href="/olahraga"
             class="bg-[#FF6A5E] rounded-2xl p-5
                     flex items-center justify-center
                     h-24 transition hover:scale-[1.02]">
