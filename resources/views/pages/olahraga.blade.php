@@ -1,5 +1,5 @@
 <x-layouts.appOlh title="Olahraga">
-<div class="w-full min-h-screen bg-[#DFA4A4] px-10 py-6 font-[Poppins]">
+<div class="w-full min-h-screen bg-[#DFA4A4] px-10 py-6">
 
     <!-- HEADER -->
     <div class="flex items-center justify-between">
