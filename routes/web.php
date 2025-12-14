@@ -8,11 +8,11 @@ use App\Mail\ResetPasswordCode;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
+use App\Http\Controllers\ContactController;
 
 Route::get('/services', function () {
     return Auth::check() ? redirect("/dashboard") : view('pages.services');
 })->name('services');
-
 
 Route::get('/comingsoon', function () {
     return view('pages.comingsoon');
@@ -22,10 +22,8 @@ Route::get('/', function () {
     return Auth::check() ? redirect("/dashboard") : view('pages.homepage');
 });
 
-<<<<<<< HEAD
-=======
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 
->>>>>>> 2b042d9f2165f772454d86eb0162a0353982efef
 Route::get('/sleep-tracker', function () {
     if (!Auth::check()) return redirect()->route('login');
     $user_data = Auth::user();

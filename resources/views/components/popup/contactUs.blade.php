@@ -114,26 +114,38 @@
                     Silakan tinggalkan pesan di bawah.
                 </p>
 
-                <div class="mt-6 space-y-4">
+                <form action="{{ route('contact.send') }}" method="POST" class="mt-6 space-y-4">
+                    @csrf
 
                     <input
                         type="text"
+                        name="name"
                         placeholder="Masukkan Nama"
                         class="w-full bg-[#E6E6E6] rounded-lg px-4 py-3 outline-none placeholder-gray-500"
                     >
 
                     <input
                         type="email"
+                        name="email"
                         placeholder="Masukkan Email"
                         class="w-full bg-[#E6E6E6] rounded-lg px-4 py-3 outline-none placeholder-gray-500"
                     >
 
                     <textarea
+                        name="message"
                         placeholder="Tulis Pesan ..."
-                        class="w-full h-[140px] bg-[#E6E6E6] rounded-lg px-4 py-3 outline-none resize-none placeholder-gray-600">
-                    </textarea>
+                        class="w-full h-[140px] bg-[#E6E6E6] rounded-lg px-4 py-3 outline-none resize-none placeholder-gray-600"></textarea>
 
-                </div>
+                    <div class="flex justify-end"
+                    style="margin-top: -4px;">
+                        <button
+                            type="submit"
+                            class="bg-gradient-to-r from-[#FF5949] to-[#B65A5A] text-white font-semibold px-8 py-2 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 -my-2">
+                            Kirim
+                        </button>
+                    </div>
+
+            </form>
             </div>
         </div>
 
