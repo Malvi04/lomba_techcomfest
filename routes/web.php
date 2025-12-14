@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SleepController;
+
 
 Route::get('/services', function () {
     return Auth::check() ? redirect("/dashboard") : view('pages.services');
@@ -24,14 +26,15 @@ Route::get('/', function () {
 
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 
-Route::get('/sleep-tracker', function () {
-    if (!Auth::check()) return redirect()->route('login');
-    $user_data = Auth::user();
+Route::middleware('auth')->group(function () {
 
-    if (!$user_data->umur) return redirect('/assesment');
+    Route::get('/sleep-tracker', [SleepController::class, 'index'])
+        ->name('sleep.tracker');
 
-    return view('pages.sleep-tracking', ['user' => Auth::user()]);
-})->middleware('auth')->name('sleep.tracker');
+    Route::post('/sleep/save', [SleepController::class, 'save']);
+    Route::post('/sleep/wake', [SleepController::class, 'wake']);
+
+});
 
 Route::get('/hidupsehat', function () {
     if (!Auth::check()) return redirect()->route('login');

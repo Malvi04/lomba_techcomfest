@@ -17,14 +17,34 @@
     </h1>
 
     <!-- STATUS -->
-    <h2 class="text-center text-2xl font-bold text-red-200 flex items-center justify-center gap-1">
-        Buruk <span>⚠️</span>
-    </h2>
+    @if ($user->waktu_tidur === 1)
+        <h2 class="text-center text-2xl font-bold text-green-200 flex items-center justify-center gap-1">
+            Bagus <span>✅</span>
+        </h2>
 
-    <!-- SUGGESTION -->
-    <p class="text-center text-sm mt-2">
-        Perbaiki jam tidurmu! Setidaknya 30 menit lebih awal terlebih dahulu
-    </p>
+        <!-- SUGGESTION -->
+        <p class="text-center text-sm mt-2">
+            Pertahankan jadwal tidur yang baik! Terus jaga konsistensi waktu tidurmu.
+        </p>
+    @elseif ($user->waktu_tidur === 2)
+        <h2 class="text-center text-2xl font-bold text-red-200 flex items-center justify-center gap-1">
+            Buruk <span>⚠️</span>
+        </h2>
+
+        <!-- SUGGESTION -->
+        <p class="text-center text-sm mt-2">
+            Perbaiki jam tidurmu! Setidaknya 30 menit lebih awal terlebih dahulu
+        </p>
+    @else
+        <h2 class="text-center text-2xl font-bold text-gray-300 flex items-center justify-center gap-1">
+            Belum Ada Data <span>❓</span>
+        </h2>
+
+        <!-- SUGGESTION -->
+        <p class="text-center text-sm mt-2">
+            Lengkapi assessment untuk mendapatkan saran tidur yang tepat.
+        </p>
+    @endif
 
     <!-- CIRCLE PROGRESS -->
     <div class="flex justify-center my-8">
@@ -89,30 +109,47 @@
     <div class="flex justify-center mt-6">
         <button 
             @click="saveSleepTime()"
-            class="px-8 py-3 bg-white text-[#C97971] font-bold rounded-xl shadow hover:bg-gray-200 transition">
-            Simpan Waktu Tidur
+            :disabled="loading"
+            class="px-8 py-3 bg-white text-[#C97971] font-bold rounded-xl shadow hover:bg-gray-200 transition disabled:opacity-50 disabled:cursor-not-allowed">
+            <span x-show="!loading">Simpan Waktu Tidur</span>
+            <span x-show="loading">Menyimpan...</span>
         </button>
     </div>
 
     <!-- HISTORY -->
     <div class="text-center mt-10">
         <p class="font-semibold text-lg">Riwayat Jam Tidur</p>
+        @forelse ($records as $record)
+            <div class="flex items-center justify-between mt-4 px-10">
 
-        <div class="flex items-center justify-between mt-4 px-10">
-            <button class="px-6 py-2 bg-red-400 rounded-xl font-bold">
-                Senin
-            </button>
+                <span class="font-bold">
+                    {{ \Carbon\Carbon::parse($record->date)->translatedFormat('l') }}
+                </span>
 
-            <div>
-                <p>Tidur: <b>22:00</b></p>
+                <p>
+                    Tidur: <b>{{ $record->sleep_time }}</b>
+                </p>
+
+                @if ($record->wake_time === null)
+                    <button
+                        type="button"
+                        @click="wakeUp({{ $record->id }})"
+                        :disabled="loading"
+                        class="px-6 py-2 bg-[#A75F59] rounded-xl font-bold hover:bg-[#8B4D44] transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        <span x-show="!loading">Bangun</span>
+                        <span x-show="loading">Memproses...</span>
+                    </button>
+                @else
+                    <span class="text-sm opacity-70">
+                        Bangun: <b>{{ \Carbon\Carbon::parse($record->wake_time)->format('H:i') }}</b>
+                    </span>
+                @endif
+
             </div>
-
-            <div>
-                <button class="px-6 py-2 bg-[#A75F59] rounded-xl font-bold">
-                    Bangun
-                </button>
-            </div>
-        </div>
+        @empty
+            <p class="text-sm opacity-80">Belum ada data</p>
+        @endforelse
     </div>
 
     <!-- DASHBOARD BUTTON -->
@@ -121,8 +158,85 @@
            class="px-8 py-3 bg-white/20 text-white font-semibold rounded-xl backdrop-blur">
             Dashboard
         </a>
+    
     </div>
-
+    
 </div>
+<script>
+function sleepTracker() {
+    return {
+        // state
+        hour: 22,
+        minute: 0,
+        loading: false,
 
+        // simpan jam tidur
+        async saveSleepTime() {
+            this.loading = true;
+            try {
+                const response = await fetch('/sleep/save', {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({
+                        hour: this.hour,
+                        minute: this.minute
+                    })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.message || 'Gagal simpan');
+                }
+
+                const data = await response.json();
+                console.log('Sleep time saved:', data);
+                alert('Waktu tidur berhasil disimpan!');
+                setTimeout(() => location.reload(), 500);
+            } catch (err) {
+                console.error('Error:', err);
+                alert('Gagal menyimpan waktu tidur: ' + err.message);
+            } finally {
+                this.loading = false;
+            }
+        },
+
+        // tombol bangun
+        async wakeUp(id) {
+            if (!confirm('Apakah kamu yakin ingin bangun sekarang?')) return;
+            
+            this.loading = true;
+            try {
+                const response = await fetch('/sleep/wake', {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    },
+                    body: JSON.stringify({ id: id })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.message || 'Gagal bangun');
+                }
+
+                const data = await response.json();
+                console.log('Wake time saved:', data);
+                alert('Waktu bangun berhasil disimpan!');
+                setTimeout(() => location.reload(), 500);
+            } catch (err) {
+                console.error('Error:', err);
+                alert('Gagal menyimpan waktu bangun: ' + err.message);
+            } finally {
+                this.loading = false;
+            }
+        }
+    }
+}
+</script>
 </x-layouts.app>
